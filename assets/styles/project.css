@@ -67,6 +67,8 @@
 .cf-prop { background: var(--tint); border: 1px solid var(--line-soft); padding: 8px 12px 4px; }
 .cf-prop .lbl { color: var(--teal); }
 .cf-ind { border-top: 1px dashed var(--line-soft); padding-top: 8px; }
+.cf-audit p { font-size: 14px; color: var(--ink-soft); }
+.cf-audit .lbl { color: var(--amber); }
 .locs { display: inline-flex; flex-wrap: wrap; gap: 6px; }
 .loc { font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); border: 1px solid var(--line-soft); border-radius: 2px; padding: 0 6px; text-decoration: none; }
 .loc:hover { border-color: var(--teal); color: var(--teal); }
