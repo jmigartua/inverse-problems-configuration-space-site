@@ -1,0 +1,41 @@
+{
+  "title": "Third audit report — 14 October 2026",
+  "prepared_by": "Codex (AI assistant)",
+  "date": "2026-10-14",
+  "log": "L013",
+  "status": "Awaiting author review; no scientific corrections applied",
+  "review_findings": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07"
+  ],
+  "scope": "Public edition of the preceding conversation review, with links and comparison to the existing second report; not a new 42-claim classification or independent external review.",
+  "project_commit_at_publication_preparation": "308b6651ab31ebc1a07889e3b54f1599fcf61d3d",
+  "original_website_commit_reviewed": "bcdd0903be508931384d24f672fe3cc9d1e17c25",
+  "earlier_records_sha256": {
+    "sources/library/citation-audit/REPORT.md": "5e0c3eed6beccd0b3a339684752899bea072ed1def2bd9bfec714132769f08f2",
+    "sources/library/citation-audit/audit.json": "ef301e15cabebd35f657bec80fcc431f87e3827ad97ee742f8338a92a711c566",
+    "ecosystem/site/sources/citation-audit-2026-10-14/source.md": "063b9b7b2fd3ef2d01f84e492b45ea893adc1aed1f23c23326b0a772635412b5",
+    "ecosystem/site/sources/citation-audit-2026-10-14/report.md": "cd09b60da602b98e1277a742c3b737bfae1046502ed0abd907a0fb1f0fc943ea",
+    "ecosystem/site/sources/audit-review-2026-10-14/source.md": "6b24914f3a7e5245edf3a003b15ad11fd0cd24cc42542242f1d819fae145c477"
+  },
+  "source_sha256": "0a9fa0aa1fc5b22f425def85558513811e280c03dd4595f09ecd6274fe8bfe75",
+  "public_report_sha256": "0a9fa0aa1fc5b22f425def85558513811e280c03dd4595f09ecd6274fe8bfe75",
+  "evidence_update": {
+    "source": "Raue et al. 2009",
+    "doi": "10.1093/bioinformatics/btp358",
+    "url": "https://academic.oup.com/bioinformatics/article/25/15/1923/213246",
+    "locator": "Sections 2.3.1–2.3.2, Definition 1, and section 3",
+    "access": "Full online article accessible during the preceding conversation review; selected sections read, not the entire article."
+  },
+  "publication_adaptations": [
+    "Conversation review organized as seven stable findings R01–R07",
+    "Links, evidence locators, authorship and review status added",
+    "Relationship to existing L012 report stated explicitly",
+    "Existing claim-card renderer reused"
+  ]
+}
