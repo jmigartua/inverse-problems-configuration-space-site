@@ -1,0 +1,29 @@
+/* Rules of this project only; theme.css and site.css are the family kit, copied unchanged (L002). */
+.req-list { list-style: none; padding-left: 0; }
+.req-list li { padding-left: 52px; text-indent: -52px; }
+.req-list .num { display: inline-block; width: 44px; text-indent: 0; font-family: var(--mono); font-size: 12px; color: var(--teal); letter-spacing: 0.04em; }
+.req-list .src { text-indent: 0; font-size: 13.5px; color: var(--ink-faint); margin-top: 2px; }
+/* Sources: key, reference, status, use. */
+.cite { font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); }
+.nc { font-family: var(--mono); font-size: 12px; color: var(--warn); }
+.m { color: var(--ink-faint); font-size: 13px; }
+.sources { table-layout: fixed; }
+.sources th:nth-child(1) { width: 11%; } .sources th:nth-child(2) { width: 44%; }
+.sources th:nth-child(3) { width: 13%; } .sources th:nth-child(4) { width: 32%; }
+.sources td { overflow-wrap: anywhere; vertical-align: top; }
+.status-src-read { color: var(--ok); border-color: var(--ok); }
+.status-src-checked { color: var(--teal); border-color: var(--teal); }
+.status-src-not-checked { color: var(--warn); border-color: var(--warn); }
+/* The discourse: definitions set apart, the three-case table, the proposals. */
+.defn { border-left: 3px solid var(--teal); padding: 6px 14px; margin: 14px 0; background: var(--bg-soft, transparent); }
+.defn b { color: var(--teal); }
+.compare { table-layout: fixed; }
+.compare th:nth-child(1) { width: 16%; }
+.compare td { vertical-align: top; overflow-wrap: anywhere; font-size: 14.5px; }
+.proposal { border: 1px solid var(--line-soft); border-radius: 6px; padding: 14px 18px; margin: 16px 0; }
+.proposal .pid { font-family: var(--mono); font-size: 12px; color: var(--teal); letter-spacing: 0.04em; }
+.proposal h3 { margin: 2px 0 8px; }
+.proposal .cost { font-size: 13.5px; color: var(--ink-faint); }
+.q-list li { margin-bottom: 8px; }
+.q-list .qid { font-family: var(--mono); font-size: 12px; color: var(--teal); margin-right: 6px; }
+.attrib { font-size: 14px; color: var(--ink-soft); font-style: italic; }

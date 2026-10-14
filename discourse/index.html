@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Discourse · inverse-problems-configuration-space – inverse-problems-configuration-space · what the projection keeps</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html-afe927e19676d0e50b1726048be49fb1.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- KaTeX auto-render: publication titles carry TeX inside generated HTML that
+     Quarto's own math pipeline never sees (same approach as thermomat). -->
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script>
+/* The header ribbon is sticky; the side columns and anchor targets need its height. */
+(function () {
+  function headH() {
+    var t = document.querySelector(".topline"), h = document.querySelector(".site-head");
+    var px = (t ? t.offsetHeight : 0) + (h ? h.offsetHeight : 0);
+    if (px) document.documentElement.style.setProperty("--head-h", px + "px");
+  }
+  document.addEventListener("DOMContentLoaded", headH);
+  window.addEventListener("load", headH);
+  window.addEventListener("resize", headH);
+})();
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }, { left: "\\(", right: "\\)", display: false }],
+      throwOnError: false
+    });
+  }
+  /* Quarto's KaTeX pipeline writes <span class="math inline">TeX</span> without delimiters and renders
+     them in a loop that reads firstChild.data; that loop dies at the first span the auto-render above
+     has already turned into KaTeX markup, leaving every later formula raw. Render the rest here. */
+  if (window.katex) {
+    document.querySelectorAll(".math").forEach(function (el) {
+      if (!el.querySelector(".katex")) {
+        var t = el.textContent.replace(/^\s*\\[\(\[]/, "").replace(/\\[\)\]]\s*$/, "");
+        try { katex.render(t, el, { displayMode: el.classList.contains("display"), throwOnError: false }); } catch (e) {}
+      }
+      /* Quarto's loop would still visit this span and wipe it (firstChild is now an element, not text):
+         take it out of its sight. No stylesheet of the site depends on the class; KaTeX's own output carries the layout. */
+      el.classList.remove("math"); el.classList.add("math-done");
+    });
+  }
+});
+</script>
+
+
+<link rel="stylesheet" href="../assets/styles/theme.css">
+<link rel="stylesheet" href="../assets/styles/site.css">
+<link rel="stylesheet" href="../assets/styles/project.css">
+</head>
+
+<body>
+
+<!-- Site header, family kit. Root-absolute hrefs are rewritten by Quarto to
+     page-relative links at render time. -->
+<div class="topline"></div>
+<header class="site-head">
+  <div class="site-head__inner">
+    <a href="../index.html" class="wordmark">inverse <span class="accent">problems</span> · configuration space
+      <span class="wordmark-sub">what the projection keeps · underdetermined experiments, collapsed configuration spaces, and the tools brought from outside · started October 2026</span>
+    </a>
+    <!-- The entries are the groups of data/nav.yml, in the same order; the two navigations say the same thing. -->
+    <nav class="site-nav">
+      <a href="../index.html">Overview</a>
+      <a href="../brief/index.html">Brief</a>
+      <a href="../discourse/index.html">Discourse</a>
+      <a href="../cases/index.html">Cases</a>
+      <span class="nav-pair"><a href="../programme/index.html">Programme</a><span class="sl">/</span><a href="../roadmap/index.html">Roadmap</a></span>
+      <a href="../sources/index.html">Sources</a>
+      <span class="nav-right">
+        <span class="nav-pair"><a href="../about/index.html">Method</a><span class="sl">/</span><a href="../log/index.html">Log</a></span>
+      </span>
+    </nav>
+  </div>
+</header>
+<!-- generated by tools/build.py: left navigation + opening of the reading column -->
+<div class="docs">
+<nav class="docs-nav" aria-label="Site sections">
+<button class="docs-fold" type="button" data-fold="nav" aria-label="Hide the navigation" title="Hide the navigation">‹</button>
+<details class="group" open=""><summary class="t">Overview</summary><ul><li><a href="../index.html">Overview</a></li></ul></details>
+<details class="group" open=""><summary class="t">Brief</summary><ul><li><a href="../brief/index.html">The ideas, organised</a></li></ul></details>
+<details class="group" open=""><summary class="t">Discourse</summary><ul><li><a href="../discourse/index.html">The discourse: the collapsed configuration space</a></li></ul></details>
+<details class="group" open=""><summary class="t">Cases</summary><ul><li><a href="../cases/index.html">The three cases side by side</a></li><li><a href="../cases/rietveld/index.html">Rietveld refinement and mode crystallography</a></li><li><a href="../cases/drude/index.html">Drude parameters from extinction (Daun 2019)</a></li><li><a href="../cases/dielectric/index.html">Dielectric functions from infrared spectra (FOCUS, difes)</a></li></ul></details>
+<details class="group" open=""><summary class="t">Programme / Roadmap</summary><ul><li><a href="../programme/index.html">The programme: proposals P1–P7</a></li><li><a href="../roadmap/index.html">Roadmap: the phases</a></li></ul></details>
+<details class="group" open=""><summary class="t">Sources</summary><ul><li><a href="../sources/index.html">Sources, each with its status</a></li></ul></details>
+<details class="group" open=""><summary class="t">Method / Log</summary><ul><li><a href="../about/index.html">How this site works</a></li><li><a href="../log/index.html">The log, every dated step</a></li></ul></details>
+</nav>
+<div class="docs-main">
+
+<header id="title-block-header">
+<h1 class="title">Discourse</h1>
+
+</header>
+
+
+<article class="page-article">
+<h1>The collapsed configuration space</h1>
+<p class="sub">Iñigo's ideas (T01–T11), sorted into one argument and pushed a step further. Where the text goes beyond the brief it says so. First version, 14 October 2026 (L005); to be argued over.</p>
+
+<h2 id="claim" class="anchored">1. The claim, in one paragraph</h2>
+<p>A system lives in a configuration space: the set of all values of all the parameters of the model that governs it. An experiment does not look at that space; it looks at a function of it — a diffractogram, an extinction spectrum, a reflectance curve. The function is known: that is what "I know the theory" means (T01). But the function is a projection (T04): it sends a space of many dimensions onto a curve, and in doing so it folds whole regions of the configuration space onto the same measured response, or onto responses that differ by less than the noise. Inverting the projection from the measurement alone is then not merely hard. Over the folded regions it is not defined (T05). What makes it possible is always something that is not in the measurement: a different set of coordinates in which the fold is visible, a prior that says which of the folded configurations is plausible, a second experiment that projects along another direction, or knowledge of the system written down once and applied at scale (T07–T10). The rest of this page says what kinds of fold there are, why the symmetry-mode coordinates of crystallography undo one of them, what the same move looks like in two other problems, and what a machine learned on massive, scripted data can and cannot add.</p>
+
+<h2 id="three" class="anchored">2. Three things the word "underdetermined" covers</h2>
+<p class="attrib">The brief uses one word; this development splits it into three, because the three need different tools. The vocabulary is that of the identifiability literature (Raue et al. 2009, <em>not checked</em>), of the sloppy-models literature (Gutenkunst et al. 2007; Transtrum et al. 2015) and of the model-discrepancy literature (Kennedy and O'Hagan 2001).</p>
+
+<div class="defn"><b>Structural non-identifiability</b> — an exact null space of the forward map. Two different configurations give <em>identical</em> responses, for any data quality. No amount of counting statistics breaks the tie. In diffraction: the powder average collapses the three-dimensional reciprocal space onto the modulus of the scattering vector, so every orientation-dependent piece of information is gone before the detector sees anything; the intensities carry no phases; Patterson's homometric structures (1944, <em>not checked</em>) are distinct arrangements with the same set of interatomic vectors and hence the same intensities. In the Drude model at low frequencies only the product \( \omega_p^2 \tau \), the dc conductivity, is seen: a spectrum confined to that range cannot separate the two parameters at all.</div>
+
+<div class="defn"><b>Practical non-identifiability</b> — a near-null space at the resolution and noise of the instrument. The forward map does distinguish the configurations, but by less than the measurement can resolve. This is the "sloppy" situation: the Fisher information matrix of the fit has eigenvalues spread over many decades, the data fix a few stiff combinations of parameters tightly and leave the others to wander along long, curved valleys (Gutenkunst et al. 2007; Transtrum et al. 2015). The refined point is one point on the valley, picked by where the refinement started and by the order in which parameters were released. The standard uncertainties printed from the diagonal of the covariance matrix are the width of the valley in the chosen coordinates, not its length. Daun et al.'s Fig. 9(a) is a picture of this: the 90 % credible region of \( (\omega_p, \tau) \) is a long curved band when the extinction spectrum is measured with a halogen lamp and modelled with Rayleigh theory.</div>
+
+<div class="defn"><b>Model inadequacy</b> — the truth is not on the model manifold. The forward map is wrong or incomplete, so the best fit is the nearest point of a surface the true configuration does not lie on. The fit can be excellent and the parameters meaningless, or worse, meaningful-looking and biased (Kennedy and O'Hagan 2001; Brynjarsdóttir and O'Hagan 2014, <em>not checked</em>). Daun et al.'s paper is in the end about this: every candidate model reproduces the spectra, and the Drude parameters they return differ from one another and from ellipsometry and from bulk density and resistivity "in a statistically significant way"; the paper's conclusion is not a value of \( \omega_p \) but a diagnosis of the free-electron model.</div>
+
+<p>The three are routinely confused in practice, because all three present the same symptom: "the fit is compatible with many solutions". But a null space is removed only by another experiment or an exact constraint; a sloppy valley is shortened by better data in the right place, by a prior, or by a change of coordinates that aligns it with an axis; and model inadequacy is cured by none of these, only by a better model or by an explicit discrepancy term that keeps the inadequacy from being absorbed into the parameters. A programme that does not say which of the three it is facing will apply the wrong remedy.</p>
+
+<h2 id="geometry" class="anchored">3. The projection, written down</h2>
+<p>Let \( \theta \in \mathcal{C} \subset \mathbb{R}^n \) be the configuration — all the parameters of the model — and \( F : \mathcal{C} \to \mathcal{D} \subset \mathbb{R}^m \) the forward map that gives the response the instrument would record. The measurement is \( d = F(\theta^\ast) + \eta \), with noise \( \eta \) of covariance \( \Gamma \). Three objects carry the whole discussion.</p>
+<ul class="k-list">
+<li><b>The fibre</b> \( F^{-1}(d) = \{\theta : F(\theta) = d\} \): every configuration that gives exactly the response measured. A structural non-identifiability is a fibre of positive dimension.</li>
+<li><b>The tube</b> \( \{\theta : (F(\theta) - d)^{\mathsf T}\Gamma^{-1}(F(\theta) - d) \le \chi^2_{\text{crit}}\} \): every configuration whose response is within noise of the measurement. This is what a refinement is really choosing from. Its cross-section is what the covariance matrix describes, locally and in the coordinates used; its length along the sloppy directions is what the covariance matrix hides when only the diagonal is read.</li>
+<li><b>The model manifold</b> \( F(\mathcal{C}) \subset \mathcal{D} \): the set of all responses the model can produce. Transtrum et al. call it that and show it is typically a thin, curved ribbon with boundaries. Model inadequacy is the statement that \( d - \eta \) is not on it.</li>
+</ul>
+<p>Locally, the structure of the tube is read from the weighted Jacobian \( J = \Gamma^{-1/2}\,\partial F/\partial\theta \) at the solution. Its singular value decomposition \( J = U\Sigma V^{\mathsf T} \) gives the stiffness spectrum \( \sigma_1 \ge \sigma_2 \ge \dots \ge \sigma_n \): a singular value of zero is a structural non-identifiability, a singular value much smaller than one is a practical one, and the columns of \( V \) are the directions in configuration space those singular values belong to. The point for what follows: <em>the right singular vectors of \( J \) are the coordinates the experiment actually sees</em>. They are combinations of the model's parameters, not the parameters themselves, and they change from one solution to another. A refinement program computes \( J \) at every cycle; it reports the correlation matrix, which almost nobody reads, and the diagonal of \( (J^{\mathsf T}J)^{-1} \), which everybody reads and which answers the wrong question.</p>
+<p>The counting that makes the brief's "too many parameters" (T02) precise is also here. A diffractogram has thousands of points, but its effective dimension is far smaller: the number of resolved peaks, each carrying a position, an integrated intensity and a width, plus a smooth background of a few parameters. Everything that is not in that count is noise or redundancy. The configuration space has as many dimensions as the model has parameters: coordinates, occupancies, displacement parameters, cell, profile, corrections. The experiment is underdetermined whenever the second count exceeds the first <em>in the directions the Jacobian can see</em>, and that qualification is the whole subject.</p>
+
+<h2 id="modes" class="anchored">4. Why symmetry-adapted modes work, stated so that it can be carried elsewhere</h2>
+<p class="attrib">T06 and T07 are Iñigo's. The reading of them as a change of basis chosen for the shape of the prior is this development's; it is also, in other words, what Perez-Mato, Orobengoa and Aroyo (2010) describe as the purpose of the symmetry-mode parameterisation: detection of hidden structural correlations, identification of fundamental and marginal degrees of freedom, reduction of the effective structural parameters.</p>
+<p>A distorted structure of pseudo-symmetric type is written as a parent structure of higher symmetry plus a displacement field \( \mathbf{u} \) of its atoms. The mode decomposition writes that same field in a different orthonormal basis: \( \mathbf{u} = \sum_k A_k\,\boldsymbol{\epsilon}_k \), where each \( \boldsymbol{\epsilon}_k \) is a displacement pattern that transforms as an irreducible representation of the parent space group and \( A_k \) is its amplitude (Perez-Mato et al. 2010; Orobengoa et al. 2009; Campbell et al. 2006). Nothing is lost: the configuration space is the same space, the number of coordinates the same number, the map between coordinates and amplitudes linear and invertible. So the question is why the same space, in these coordinates, is explorable (T07) when in atomic coordinates it is not. Three reasons, and each of them is a general principle in disguise.</p>
+<ol class="k-list">
+<li><b>The prior is sparse in this basis and not in the other.</b> Landau's picture of a displacive transition says the distortion is dominated by one, sometimes two, primary modes, with the secondary modes small and induced. In atomic coordinates that knowledge cannot even be written down: every atom moves, by a little, and nothing says which little is which. In mode coordinates it reads "most amplitudes are near zero", which is a prior a refinement can use: release the primary amplitudes, freeze the marginal ones, and the configuration space is cut to its physical dimension before a single least-squares cycle. The general principle: <em>choose the coordinates in which what the physics expects is simple to state</em>.</li>
+<li><b>The correlations the data cannot break become single coordinates.</b> When two atoms move together by symmetry, a powder pattern sees their joint displacement and not the difference; in atomic coordinates that is a sloppy valley between two parameters, in mode coordinates it is one amplitude that is well determined and one that is small and may be fixed. The general principle: <em>choose the coordinates in which the near-null space of the Jacobian is aligned with the axes</em>, so that the practical non-identifiability is seen as such instead of being smeared over parameters that look independent.</li>
+<li><b>The hierarchy of amplitudes is a measurement of which degrees of freedom matter.</b> A refinement in modes returns not only a structure but an ordered list: this amplitude large and determined, that one small and undetermined. That list is the dimension reduction Perez-Mato et al. speak of, obtained from the data, with a physical meaning attached to each retained direction. The general principle: <em>the output of the analysis should be the ranking of directions, not only the point</em>.</li>
+</ol>
+<p>And one thing the modes do not do, which must be said because the programme depends on it: the parent structure is not in the data. It is a hypothesis — a group–supergroup relation the crystallographer brings from chemistry, from a phase diagram, from a related compound. The symmetry search of T07 searches <em>within</em> that hypothesis. So the external tool has two parts: a piece of exact mathematics that anyone can script (the decomposition, given the parent), and a piece of judgement that cannot be scripted away (the choice of parent). The programme must record the second as an input with its provenance, not hide it in the first.</p>
+
+<h2 id="elsewhere" class="anchored">5. The same move in the other two cases</h2>
+<p>If the principle is "find the basis in which the prior is simple and the null space is explicit, then bring in what the data cannot supply", it should name its analogues in problems that have no space groups. The <a href="../cases/index.html">Cases</a> pages work the three side by side; this is the summary.</p>
+<ul class="k-list">
+<li><b>Drude parameters from an extinction spectrum</b> (Daun et al. 2019). The configuration is \( (\omega_p, \tau) \), a scale factor that absorbs the particle number density, a size distribution and a temperature. The projection is the extinction cross-section integrated along a line of sight and over the sizes; in the visible, where the spectrum is a smooth decay, it sees mainly one combination of \( \omega_p \) and \( \tau \). The external tools the paper uses are other experiments (ellipsometry; bulk density and resistivity through \( \omega_p^2 = N_e e^2/\epsilon_0 m_e \) and \( \tau = m_e\sigma_{\text{dc}}/N_e e^2 \)), a better source that reaches the ultraviolet where the surface-plasmon resonance sits, and an explicit model-error term for the approximate Mie theory after Kaipio and Somersalo. The "sparse basis" here is not a symmetry; it is the choice of which spectral region to measure, and the paper finds it by trying two lamps. The programme proposes to compute it instead (P6): the Fisher information per wavelength band says in advance which measurement would shorten the valley.</li>
+<li><b>Dielectric functions from infrared reflectance and emittance</b> (the FOCUS–difes case). The configuration is a list of oscillators, three or four parameters each, plus \( \epsilon_\infty \); the projection is the Fresnel reflectance \( R = |\tilde r|^2 \) or the opaque emittance \( 1 - R \), measured on a finite range. Two folds are known to everyone who has done it: reflectance alone gives the modulus of \( \tilde r \) and not its phase, and a smooth \( \epsilon(\omega) \) can be written as a sum of overlapping Lorentzians in many ways. The exact constraints that play the part of symmetry are causality — the Kramers–Kronig relations that fix the phase from the modulus over an infinite range — and the sum rules; the finite range is what makes them an approximation that needs anchoring (Kuzmenko 2005, <em>not checked</em>). The "sparse prior" is continuity across a series: the parameters of a mode measured at twenty temperatures must move smoothly, and a fit that satisfies each spectrum but jumps between neighbours has found a valley, not a structure. difes already carries the expert's steps as <em>recipes</em>, text files of bench verbs; that is T10 before the fact.</li>
+</ul>
+<p>Across the three the pattern holds: a known forward map; a projection that folds; a point returned by a fit that looks like an answer; and a way out that always comes from outside the measurement — exact mathematics (symmetry, causality), another projection (another radiation, another lamp, another temperature), or a prior (sparsity in the right basis, smoothness along a series).</p>
+
+<h2 id="scripts" class="anchored">6. Where the expert's knowledge goes</h2>
+<p class="attrib">T08–T10 are Iñigo's. The description of what the output of the scripts must be, and of what the learning can and cannot do, is this development's.</p>
+<p>Today the knowledge is applied by hand, once per data set, and lost. The expert looks at one pattern, decides the parent, decides which parameters to release in which order, sets the restraints, judges the residual, and moves on; what remains is a structure in a paper and nothing of the path that led there. Iñigo's proposal (T09, T10) is to move the knowledge one level up: from the hands to the scripts that treat the data. The symmetry analysis, the release strategy, the constraints, the sanity checks — written once, applied to everything. Three consequences follow that the brief does not spell out.</p>
+<ol class="k-list">
+<li><b>What the script must keep is the tube, not the point.</b> If every treatment stores only the refined structure, the corpus repeats the mistake of the hand analysis at scale. Each treatment should keep the full result: the solution, the Jacobian's singular spectrum and vectors at it, the alternative minima found from other starting points, the mode amplitudes with their uncertainties, the residual. That is the data over which anything can be learned about identifiability; the point alone teaches nothing about it.</li>
+<li><b>The knowledge in the script is also the knowledge in the training set.</b> The published successes of machine learning on powder diffraction are built exactly this way: Park et al. (2017) classify crystal system, extinction group and space group from about 150 000 <em>simulated</em> patterns; Lee et al. (2020) identify phases in mixtures from 1.8 million <em>synthetic</em> patterns combinatorially mixed from 170 compounds; Szymanski et al. (2021) train on simulated spectra <em>augmented with physics-informed perturbations</em> and return probabilities from an ensemble. In every case the expertise is in the generator — which structures, which instrument model, which artefacts — and not in the labelling of real data one by one. T10 is already how the field's best results are produced; the brief names the principle the practice follows.</li>
+<li><b>The symmetry is what keeps the synthetic data physical.</b> A generator that samples atomic coordinates at random produces structures that do not exist; one that samples mode amplitudes around a parent, with the primary ones large and the secondary ones small, produces the structures a transition actually makes. The corpus of T09 is credible only to the degree that the script of T10 encodes constraints of this kind. The two theses are one.</li>
+</ol>
+
+<h2 id="learning" class="anchored">7. What a machine learned on that corpus can and cannot do</h2>
+<p>The limit first, because it decides the form of everything else. <em>Learning cannot recreate what the projection destroyed.</em> If two configurations give the same response, no training set breaks the tie; a network asked for a point will return one of them, or an average of them, with a confidence that reflects nothing. For an underdetermined problem the only honest output is a distribution over the fibre, and a method that returns a point should be rejected on that ground alone. Within that limit, five things are possible, and each is a proposal of the <a href="../programme/index.html">programme</a>.</p>
+<ul class="k-list">
+<li><b>Amortised inference: the whole tube, at the cost of a lookup.</b> Simulation-based inference (Cranmer, Brehmer and Louppe 2020) trains a network on pairs (configuration, simulated response) to return, for any new response, the posterior over configurations. A refinement gives one point and a local covariance; this gives the fibre with its curvature and its disconnected branches, for every pattern of a measurement campaign in the time a single refinement takes. It is the formal version of "explore the configuration space" in T07, done once for a family of problems instead of once per data set.</li>
+<li><b>Priors learned from what exists.</b> The databases of known structures, of measured dielectric functions, of published Drude parameters are the distribution of configurations nature actually produces. A prior estimated from them is "chemical sense" made explicit and auditable, and it is a legitimate external tool in the sense of T05 precisely because it is not in the measurement.</li>
+<li><b>Surrogates for the forward map that remove a trade-off.</b> Daun et al. use an approximation to Mie theory because the exact Riccati–Bessel sums are too slow for a million MCMC steps, and then pay for it with a model-error term. A forward model learned once from the exact theory is both fast and exact to within a known tolerance, and takes that term away.</li>
+<li><b>Model inadequacy detected at scale.</b> One structured residual is a bad fit; the same structured residual across a thousand treatments of a family is a wrong model. A corpus is the only place where that distinction can be made, and it is where the third kind of underdetermination becomes visible instead of being absorbed into the parameters.</li>
+<li><b>Experimental design: which measurement cuts the fibre.</b> Given the tube of the present data, the expected information gain of a candidate measurement — a second radiation, an ultraviolet source, a lower temperature — is computable from the Jacobian. The two lamps of Daun et al. were a design experiment done by hand; the corpus can rank the candidates before anyone goes to the instrument.</li>
+</ul>
+
+<h2 id="objections" class="anchored">8. Objections, taken seriously</h2>
+<ul class="k-list">
+<li><b>"This is Bayesian inference with another name."</b> In form, yes: the tube is a posterior, the prior is a prior. What the brief adds is not the inference but <em>where the knowledge enters</em>: in the basis (modes, causality) and in the scripts that generate and treat the corpus, rather than in the hands at each fit; and the insistence that the result is the ranking of directions and the region, not the point. Daun et al. do the inference by hand on one spectrum; the proposal is the same inference scripted over thousands, with the basis chosen first.</li>
+<li><b>"Networks trained on synthetic data do not transfer."</b> The known failure, and the reason point 3 of §6 matters. Two answers. The generator is where the expertise lives, so the quality of transfer is a measure of the quality of the script, which is the right thing to be measuring. And the primary targets proposed here — which directions of configuration space a given measurement determines — are properties of the forward map and the instrument, not of the sample; they transfer by construction, because they were never about the sample.</li>
+<li><b>"Mode crystallography already does this."</b> For displacive distortions, with a chosen parent, one structure at a time: yes, and that is why it is the model case. What is not done is the generalisation of the move to problems without space groups, and its automation over a corpus with the tube kept.</li>
+<li><b>"Someone still chooses the parent."</b> Yes. That is the irreducible expert input, and the programme asks that it be recorded as an input with its provenance rather than hidden in a script that appears to need none. The same holds for the number of oscillators in an infrared fit and for the choice of Drude as the dielectric model: these are hypotheses, and the corpus should carry them as fields, so that the learning can tell which of them the data could have contradicted.</li>
+</ul>
+
+<h2 id="glossary" class="anchored">9. The words, fixed</h2>
+<ul class="k-list">
+<li><b>Configuration space</b> \( \mathcal{C} \): all values of all parameters of the model. <b>Data space</b> \( \mathcal{D} \): all responses the instrument can record. <b>Forward map</b> \( F \): the theory, from the one to the other. <b>Projection</b>: the brief's word for \( F \) when it folds.</li>
+<li><b>Fibre</b>: the configurations that give exactly a response. <b>Tube</b>: those that give it within noise. <b>Model manifold</b>: all responses the model can produce.</li>
+<li><b>Structural non-identifiability</b>: a fibre of positive dimension. <b>Practical non-identifiability</b>: a tube long in some direction at the instrument's noise. <b>Sloppiness</b>: the typical case of the latter, with singular values spread over decades. <b>Model inadequacy</b>: the truth is off the manifold.</li>
+<li><b>External tool</b> (T05): anything not in the measurement that cuts the tube — exact constraints, another projection, a prior, a basis in which the prior is simple.</li>
+<li><b>Amortised inference</b>: the map from response to posterior learned once from simulations and applied to any measurement.</li>
+</ul>
+</article>
+
+
+<!-- Closes the reading column opened by _gen/docs-nav.html, adds the right
+     "On this page" list, and wires: current-page marking in the left nav,
+     breadcrumbs, the page TOC (from h2/h3 in the reading column) and a
+     scroll-spy. Pure DOM, no library. -->
+  </div>
+  <aside class="docs-toc"><button class="docs-fold" type="button" data-fold="toc" aria-label="Hide the page outline" title="Hide the page outline">›</button><div class="t">On this page</div><ol></ol></aside>
+</div>
+<script>
+(function () {
+  /* 0. The two side panels fold on their chevrons; the choice is remembered in this browser. */
+  var docs = document.querySelector('.docs');
+  if (docs) {
+    var store = {};
+    try { store = JSON.parse(localStorage.getItem('docs-fold') || '{}'); } catch (e) { store = {}; }
+    function apply() {
+      docs.classList.toggle('nav-folded', !!store.nav);
+      docs.classList.toggle('toc-folded', !!store.toc);
+      document.querySelectorAll('.docs-fold').forEach(function (b) {
+        var which = b.getAttribute('data-fold'), folded = !!store[which];
+        b.innerHTML = (which === 'nav') === folded ? '&rsaquo;' : '&lsaquo;';
+        var what = which === 'nav' ? 'the navigation' : 'the page outline';
+        b.title = (folded ? 'Show ' : 'Hide ') + what; b.setAttribute('aria-label', b.title);
+      });
+    }
+    document.querySelectorAll('.docs-fold').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var which = b.getAttribute('data-fold'); store[which] = !store[which];
+        try { localStorage.setItem('docs-fold', JSON.stringify(store)); } catch (e) {}
+        apply();
+      });
+    });
+    apply();
+  }
+  /* 0b. The header ribbon: mark the entry whose section holds this page. Quarto rewrites the hrefs to
+     relative paths, so folders are read from the resolved URLs; the Overview link gives the site root. */
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.site-nav a'));
+    if (!links.length) return;
+    /* a served URL may end in '/' (GitHub Pages: …/about/); read it as …/about/index.html */
+    function folder(path) { if (/\/$/.test(path)) path += 'index.html'; var s = path.split('/').filter(Boolean); return s.length > 1 ? s[s.length - 2] : ''; }
+    var wm = document.querySelector('a.wordmark');            // the wordmark links to the site root
+    var root = folder((wm || links[0]).pathname);
+    var map = { rietveld: 'cases', drude: 'cases', dielectric: 'cases' };
+    function key(path) { var f = folder(path); if (f === root) return 'overview'; return map[f] || f; }
+    var here = key(location.pathname);
+    links.forEach(function (a) { a.classList.toggle('current', key(a.pathname) === here); });
+  })();
+
+  var main = document.querySelector('.docs-main');
+  var nav = document.querySelector('.docs-nav');
+  var toc = document.querySelector('.docs-toc ol');
+  if (!main || !nav || !toc) return;
+
+  /* 1. Left nav: mark the current page (and section, if the hash matches). */
+  var here = location.pathname.replace(/\/index\.html$/, '/');
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var pageLink = null, hashLink = null;
+  links.forEach(function (a) {
+    var p = a.pathname.replace(/\/index\.html$/, '/');
+    if (p !== here) return;
+    if (!a.hash && !pageLink) pageLink = a;
+    if (a.hash && a.hash === location.hash) hashLink = a;
+  });
+  var cur = hashLink || pageLink;
+  if (cur) {
+    cur.classList.add('current');
+    var det = cur.closest('details.group');
+    if (det) { det.open = true; det.classList.add('has-current'); }
+    /* Breadcrumbs: group title › page (› section). */
+    var crumbs = document.createElement('div');
+    crumbs.className = 'docs-crumbs';
+    var g = det ? det.querySelector('summary.t') : null;
+    var parts = [];
+    function push(t) { if (t && parts[parts.length - 1] !== t) parts.push(t); }
+    if (g) push(g.textContent.trim());
+    if (pageLink && pageLink !== cur) push(pageLink.textContent.trim());
+    push(cur.textContent.trim());
+    crumbs.innerHTML = parts.map(function (t, i) {
+      return (i ? '<span class="sep">›</span>' : '') + '<span>' + t.replace(/</g, '&lt;') + '</span>';
+    }).join('');
+    main.insertBefore(crumbs, main.firstChild);
+  }
+
+  /* 2. Right "On this page": h2 and h3 of the reading column. */
+  var used = {};
+  var heads = Array.prototype.slice.call(main.querySelectorAll('h2, h3')).filter(function (h) {
+    if (h.closest('.site-foot, .featured-band, .msg-grid, [data-toc="no"]')) return false;
+    if (h.classList.contains('unnumbered') || h.id === 'contenido') return false;
+    return h.textContent.trim().length > 0;
+  });
+  heads.forEach(function (h) {
+    if (!h.id) {
+      var s = h.textContent.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || 'sec';
+      while (used[s] || document.getElementById(s)) s += '-';
+      h.id = s;
+    }
+    used[h.id] = true;
+    var li = document.createElement('li');
+    if (h.tagName === 'H3') li.className = 'l3';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    /* This runs before KaTeX has rendered the headings, so a heading with mathematics still holds TeX
+       source: copy its markup, including the math spans, and let the page's KaTeX pass render the copy. */
+    var copy = h.cloneNode(true);
+    copy.querySelectorAll('.katex-mathml, annotation, .anchorjs-link').forEach(function (n) { n.remove(); });
+    var label = copy.textContent.trim().replace(/\s+/g, ' ');
+    if (copy.querySelector('.math, .math-done, .katex')) a.innerHTML = copy.innerHTML.trim();
+    else a.textContent = label.length > 72 ? label.slice(0, 70).replace(/[\s,;:]+\S*$/, '') + '…' : label;
+    a.title = label;
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  if (!heads.length) { document.querySelector('.docs-toc').hidden = true; return; }
+
+  /* 3. Scroll-spy. */
+  var items = Array.prototype.slice.call(toc.querySelectorAll('a'));
+  function spy() {
+    var y = window.scrollY + 120, best = null;
+    heads.forEach(function (h) { if (h.getBoundingClientRect().top + window.scrollY <= y) best = h; });
+    items.forEach(function (a) { a.classList.toggle('current', best && a.getAttribute('href') === '#' + best.id); });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  window.addEventListener('hashchange', spy);
+  spy();
+})();
+</script>
+<footer class="site-foot">
+  <div class="site-foot__inner">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <h4 class="anchored">What this is</h4>
+        <p>The working site of a line of thought: inverse problems whose theory is known but whose experiment collapses the configuration space, so that the parameters cannot be read back from the measurement without a tool brought from outside — a change of coordinates, a prior, another experiment, knowledge written into scripts and learned over at scale. The ideas are Iñigo González de Arrieta's; this is their development, with three cases, a programme, the sources and a dated log.</p>
+        <div class="cite-block">Josu M. Igartua · Departamento de Física, UPV/EHU<br>josu.igartua@ehu.eus</div>
+      </div>
+      <div><h4 class="anchored">This site</h4><ul>
+        <li><a href="../index.html">Overview</a></li><li><a href="../brief/index.html">Brief</a></li><li><a href="../discourse/index.html">Discourse</a></li><li><a href="../cases/index.html">Cases</a></li><li><a href="../programme/index.html">Programme</a></li><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../sources/index.html">Sources</a></li><li><a href="../log/index.html">Log</a></li><li><a href="../about/index.html">Method</a></li></ul></div>
+      <div><h4 class="anchored">Sources</h4><ul>
+        <li><a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">Daun et al. 2019</a></li>
+        <li><a href="https://doi.org/10.1107/S0108767310016247">Perez-Mato et al. 2010</a></li>
+        <li><a href="https://www.cryst.ehu.eus/cryst/amplimodes.html">AMPLIMODES</a></li>
+        <li><a href="https://doi.org/10.1073/pnas.1912789117">Cranmer et al. 2020</a></li></ul></div>
+      <div><h4 class="anchored">Status</h4><ul>
+        <li>Published at <a href="https://jmigartua.github.io/inverse-problems-configuration-space-site/">jmigartua.github.io/inverse-problems-configuration-space-site</a>; the sources are private</li>
+        <li>Rebuilt from <code>data/*.yml</code> on every render</li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Josu M. Igartua · ideas of Iñigo González de Arrieta · work in progress</span>
+      <span>Quarto · family design kit</span>
+    </div>
+  </div>
+</footer>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+    tabsets.forEach(function(tabset) {
+      const tabby = new Tabby('#' + tabset.id);
+    });
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
