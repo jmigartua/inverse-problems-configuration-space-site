@@ -135,8 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <div class="page-wide">
 <h1>Sources</h1>
-<p class="lede">Every reference the discourse and the cases lean on, with what it is used for and how far it has been checked: <em>read</em> means read in full in this project, <em>checked</em> that its existence, authors, journal and year were confirmed by a search on the date given, <em>not checked</em> that it is cited from memory and still to be confirmed (L004). A claim that rests only on a source marked <em>not checked</em> is marked so in the prose.</p>
-<p class="sub">21 sources: 2 read in full here, 11 confirmed by a search on the date given, 8 cited from memory and still to be confirmed. Generated from <code>data/sources.yml</code>; do not edit by hand.</p>
+<p class="lede">Every reference the discourse and the cases lean on, with its DOI, source URL and access status. <em>Read</em> means read in full in this project; <em>checked</em> means its bibliographic identity has been verified. Downloading a PDF does not mean it has been read in full or that the claims made about it have been independently reassessed.</p>
+<p class="sub">The reference audit of 14 October 2026 (L007) covers these 21 sources and all 44 numbered references in Daun et al. The local collection in <code>sources/library/</code> contains a searchable index, BibTeX, a verification manifest, citation corrections and a list of missing full texts. The PDFs remain outside this public site. Public full-text links below identify the copies actually downloaded, including manuscripts and preprints where indicated.</p>
+<p class="sub">21 sources: 2 read in full here, 19 confirmed by a search on the date given, 0 cited from memory and still to be confirmed. Generated from <code>data/sources.yml</code>; do not edit by hand.</p>
 <h2 class="anchored">In the project</h2><div class="table-wrap">
 <table class="sources caption-top">
 <colgroup>
@@ -157,8 +158,10 @@ document.addEventListener("DOMContentLoaded", function () {
 <tr id="daun2019" class="odd">
 <td><span class="m">daun2019</span></td>
 <td>K. J. Daun, J. Menser, M. Asif, S. Musikhin, T. Dreier, C. Schulz, <em>Evaluation of Drude parameters for liquid germanium nanoparticles through aerosol-based line-of-sight attenuation measurements</em>, J. Quant. Spectrosc. Radiat. Transfer 226 (2019) 146–156.<br>
-<span class="m">doi: <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">10.1016/j.jqsrt.2019.01.021</a></span></td>
-<td><span class="status status-src-read">read</span> <span class="m">2026-10-14</span></td>
+<span class="m">doi: <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">10.1016/j.jqsrt.2019.01.021</a></span><br>
+<a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">Source / publisher</a></td>
+<td><span class="status status-src-read">read</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: published; pre-existing</span></td>
 <td>The second case: Bayesian inference of (<span class="math inline">\(\omega\)</span>_p, <span class="math inline">\(\tau\)</span>) from extinction spectra with Rayleigh, Mie and approximate-Mie models; the ill-posedness shown in its Fig. 9; model error after Kaipio and Somersalo. The PDF is in <code>sources/</code>.</td>
 </tr>
 </tbody>
@@ -184,37 +187,46 @@ document.addEventListener("DOMContentLoaded", function () {
 <tr id="perezmato2010" class="odd">
 <td><span class="m">perezmato2010</span></td>
 <td>J. M. Perez-Mato, D. Orobengoa, M. I. Aroyo, <em>Mode crystallography of distorted structures</em>, Acta Cryst. A66 (2010) 558–590.<br>
-<span class="m">doi: <a href="https://doi.org/10.1107/S0108767310016247">10.1107/S0108767310016247</a></span></td>
-<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span></td>
+<span class="m">doi: <a href="https://doi.org/10.1107/S0108767310016247">10.1107/S0108767310016247</a></span><br>
+<a href="https://journals.iucr.org/paper?S0108767310016247">Source / publisher</a> · <a href="https://journals.iucr.org/a/issues/2010/05/00/sh5107/sh5107.pdf">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: published</span></td>
 <td>The symmetry-mode parameterisation of distorted structures; its stated uses — hidden correlations, fundamental and marginal degrees of freedom, fewer effective parameters — are the external tool of T07 in the authors' own words.</td>
 </tr>
 <tr id="orobengoa2009" class="even">
 <td><span class="m">orobengoa2009</span></td>
 <td>D. Orobengoa, C. Capillas, M. I. Aroyo, J. M. Perez-Mato, <em>AMPLIMODES: symmetry-mode analysis on the Bilbao Crystallographic Server</em>, J. Appl. Cryst. 42 (2009) 820–833.<br>
-<span class="m">doi: <a href="https://doi.org/10.1107/S0021889809028064">10.1107/S0021889809028064</a></span></td>
+<span class="m">doi: <a href="https://doi.org/10.1107/S0021889809028064">10.1107/S0021889809028064</a></span><br>
+<a href="https://journals.iucr.org/paper?S0021889809028064">Source / publisher</a> · <a href="https://cryst.ehu.es/html/resources/oviedo2018/articles_PM/AMPLIMODES_article.pdf">Public full-text copy</a></td>
 <td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
-<span class="nc">doi not checked</span></td>
+<span class="m">Local PDF: published</span></td>
 <td>The program that decomposes a distorted structure into symmetry-adapted modes; the tool a script would call.</td>
 </tr>
 <tr id="campbell2006" class="odd">
 <td><span class="m">campbell2006</span></td>
 <td>B. J. Campbell, H. T. Stokes, D. E. Tanner, D. M. Hatch, <em>ISODISPLACE: a web-based tool for exploring structural distortions</em>, J. Appl. Cryst. 39 (2006) 607–614.<br>
-<span class="m">doi: <a href="https://doi.org/10.1107/S0021889806014075">10.1107/S0021889806014075</a></span></td>
+<span class="m">doi: <a href="https://doi.org/10.1107/S0021889806014075">10.1107/S0021889806014075</a></span><br>
+<a href="https://journals.iucr.org/paper?S0021889806014075">Source / publisher</a> · <a href="https://iso.byu.edu/jac39_607reprint.pdf">Public full-text copy</a></td>
 <td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
-<span class="nc">doi not checked</span></td>
+<span class="m">Local PDF: published</span></td>
 <td>The other mode tool (now ISODISTORT); mode amplitudes as refinable parameters in Rietveld programs.</td>
 </tr>
 <tr id="rietveld1969" class="even">
 <td><span class="m">rietveld1969</span></td>
 <td>H. M. Rietveld, <em>A profile refinement method for nuclear and magnetic structures</em>, J. Appl. Cryst. 2 (1969) 65–71.<br>
-<span class="m">doi: <a href="https://doi.org/10.1107/S0021889869006558">10.1107/S0021889869006558</a></span></td>
-<td><span class="status status-src-not-checked">not checked</span></td>
+<span class="m">doi: <a href="https://doi.org/10.1107/S0021889869006558">10.1107/S0021889869006558</a></span><br>
+<a href="https://journals.iucr.org/paper?S0021889869006558">Source / publisher</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Full text not obtained</span></td>
 <td>The method of the first case.</td>
 </tr>
 <tr id="patterson1944" class="odd">
 <td><span class="m">patterson1944</span></td>
-<td>A. L. Patterson, <em>Ambiguities in the X-ray analysis of crystal structures</em>, Phys. Rev. 65 (1944) 195–201.</td>
-<td><span class="status status-src-not-checked">not checked</span></td>
+<td>A. L. Patterson, <em>Ambiguities in the X-ray analysis of crystal structures</em>, Phys. Rev. 65 (1944) 195–201.<br>
+<span class="m">doi: <a href="https://doi.org/10.1103/PhysRev.65.195">10.1103/PhysRev.65.195</a></span><br>
+<a href="https://link.aps.org/doi/10.1103/PhysRev.65.195">Source / publisher</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Full text not obtained</span></td>
 <td>Homometric structures: different structures with identical diffraction intensities — an exact null space of the forward map.</td>
 </tr>
 </tbody>
@@ -239,40 +251,57 @@ document.addEventListener("DOMContentLoaded", function () {
 <tbody>
 <tr id="hadamard1902" class="odd">
 <td><span class="m">hadamard1902</span></td>
-<td>J. Hadamard, <em>Sur les problèmes aux dérivées partielles et leur signification physique</em>, Princeton University Bulletin 13 (1902) 49–52.</td>
-<td><span class="status status-src-not-checked">not checked</span></td>
+<td>J. Hadamard, <em>Sur les problèmes aux dérivées partielles et leur signification physique</em>, Princeton University Bulletin 13 (1902) 49–52.<br>
+<a href="https://illposed.net/hadamard.pdf">Source / publisher</a> · <a href="https://illposed.net/hadamard.pdf">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="nc">Original Princeton University Bulletin 13(4), April 1902, pp. 49–52. No DOI was confirmed. Unrelated Crossref search hits were rejected.</span><br>
+<span class="m">Local PDF: scan of original publication</span></td>
 <td>The definition of a well-posed problem (existence, uniqueness, continuous dependence); an underdetermined inverse problem fails the second and third.</td>
 </tr>
 <tr id="tarantola2005" class="even">
 <td><span class="m">tarantola2005</span></td>
-<td>A. Tarantola, <em>Inverse Problem Theory and Methods for Model Parameter Estimation</em>, SIAM, 2005.</td>
-<td><span class="status status-src-not-checked">not checked</span></td>
+<td>A. Tarantola, <em>Inverse Problem Theory and Methods for Model Parameter Estimation</em>, SIAM, 2005.<br>
+<span class="m">doi: <a href="https://doi.org/10.1137/1.9780898717921">10.1137/1.9780898717921</a></span><br>
+<a href="https://epubs.siam.org/doi/book/10.1137/1.9780898717921">Source / publisher</a> · <a href="https://people.computing.clemson.edu/~jmarty/projects/lowLatencyNetworking/papers/AI-ML/InverseProblemTheory.pdf">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: published book</span></td>
 <td>The probabilistic formulation: the solution of an inverse problem is a probability density on the model space, not a point.</td>
 </tr>
 <tr id="kaipio2005" class="odd">
 <td><span class="m">kaipio2005</span></td>
-<td>J. Kaipio, E. Somersalo, <em>Statistical and Computational Inverse Problems</em>, Springer, 2005.</td>
-<td><span class="status status-src-not-checked">not checked</span></td>
+<td>J. Kaipio, E. Somersalo, <em>Statistical and Computational Inverse Problems</em>, Springer, 2005.<br>
+<span class="m">doi: <a href="https://doi.org/10.1007/b138659">10.1007/b138659</a></span><br>
+<a href="https://link.springer.com/10.1007/b138659">Source / publisher</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="nc">Same book as Daun reference [40]. Springer gives copyright 2005, hardcover release 1 December 2004, and eBook release 30 March 2006; these dates explain the 2005/2006 citations. Full book not obtained; free front/back matter is not counted as the book.</span><br>
+<span class="m">Full text not obtained</span></td>
 <td>The approximation error model: the discrepancy between an exact and an approximate forward model treated as a random term with its own mean and covariance; used by Daun et al. for the approximate Mie model.</td>
 </tr>
 <tr id="kennedy2001" class="even">
 <td><span class="m">kennedy2001</span></td>
 <td>M. C. Kennedy, A. O'Hagan, <em>Bayesian calibration of computer models</em>, J. R. Statist. Soc. B 63 (2001) 425–464.<br>
-<span class="m">doi: <a href="https://doi.org/10.1111/1467-9868.00294">10.1111/1467-9868.00294</a></span></td>
+<span class="m">doi: <a href="https://doi.org/10.1111/1467-9868.00294">10.1111/1467-9868.00294</a></span><br>
+<a href="https://academic.oup.com/jrsssb/article/63/3/425/7083367">Source / publisher</a></td>
 <td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
-<span class="nc">doi not checked</span></td>
+<span class="m">Full text not obtained</span></td>
 <td>Model inadequacy as a discrepancy term to be inferred together with the parameters; the parameters lose their physical meaning when the discrepancy is left out.</td>
 </tr>
 <tr id="brynjarsdottir2014" class="odd">
 <td><span class="m">brynjarsdottir2014</span></td>
-<td>J. Brynjarsdóttir, A. O'Hagan, <em>Learning about physical parameters: the importance of model discrepancy</em>, Inverse Problems 30 (2014) 114007.</td>
-<td><span class="status status-src-not-checked">not checked</span></td>
+<td>J. Brynjarsdóttir, A. O'Hagan, <em>Learning about physical parameters: the importance of model discrepancy</em>, Inverse Problems 30 (2014) 114007.<br>
+<span class="m">doi: <a href="https://doi.org/10.1088/0266-5611/30/11/114007">10.1088/0266-5611/30/11/114007</a></span><br>
+<a href="https://iopscience.iop.org/article/10.1088/0266-5611/30/11/114007">Source / publisher</a> · <a href="https://www.tonyohagan.co.uk/academic/pdf/simmach.pdf">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: author manuscript</span></td>
 <td>The demonstration that calibrated parameters are biased and over-confident when the model's discrepancy is ignored.</td>
 </tr>
 <tr id="raue2009" class="even">
 <td><span class="m">raue2009</span></td>
-<td>A. Raue, C. Kreutz, T. Maiwald, J. Bachmann, M. Schilling, U. Klingmüller, J. Timmer, <em>Structural and practical identifiability analysis of partially observed dynamical models by exploiting the profile likelihood</em>, Bioinformatics 25 (2009) 1923–1929.</td>
-<td><span class="status status-src-not-checked">not checked</span></td>
+<td>A. Raue, C. Kreutz, T. Maiwald, J. Bachmann, M. Schilling, U. Klingmüller, J. Timmer, <em>Structural and practical identifiability analysis of partially observed dynamical models by exploiting the profile likelihood</em>, Bioinformatics 25 (2009) 1923–1929.<br>
+<span class="m">doi: <a href="https://doi.org/10.1093/bioinformatics/btp358">10.1093/bioinformatics/btp358</a></span><br>
+<a href="https://academic.oup.com/bioinformatics/article/25/15/1923/213246">Source / publisher</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Full text not obtained</span></td>
 <td>The distinction between structural and practical non-identifiability, and the profile likelihood as the diagnostic.</td>
 </tr>
 </tbody>
@@ -280,6 +309,12 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 <h2 class="anchored">Sloppiness</h2><div class="table-wrap">
 <table class="sources caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Key</th>
@@ -291,14 +326,20 @@ document.addEventListener("DOMContentLoaded", function () {
 <tbody>
 <tr id="gutenkunst2007" class="odd">
 <td><span class="m">gutenkunst2007</span></td>
-<td>R. N. Gutenkunst, J. J. Waterfall, F. P. Casey, K. S. Brown, C. R. Myers, J. P. Sethna, <em>Universally sloppy parameter sensitivities in systems biology models</em>, PLoS Comput. Biol. 3 (2007) e189.</td>
-<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span></td>
+<td>R. N. Gutenkunst, J. J. Waterfall, F. P. Casey, K. S. Brown, C. R. Myers, J. P. Sethna, <em>Universally sloppy parameter sensitivities in systems biology models</em>, PLoS Comput. Biol. 3 (2007) e189.<br>
+<span class="m">doi: <a href="https://doi.org/10.1371/journal.pcbi.0030189">10.1371/journal.pcbi.0030189</a></span><br>
+<a href="https://dx.plos.org/10.1371/journal.pcbi.0030189">Source / publisher</a> · <a href="https://sethna.lassp.cornell.edu/pubPDF/SloppyEverywhere.pdf">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: published</span></td>
 <td>Fisher-information spectra spanning many decades: the data fix a few stiff parameter combinations and leave the rest free; 'focus on predictions rather than on parameters'.</td>
 </tr>
 <tr id="transtrum2015" class="even">
 <td><span class="m">transtrum2015</span></td>
-<td>M. K. Transtrum, B. B. Machta, K. S. Brown, B. C. Daniels, C. R. Myers, J. P. Sethna, <em>Perspective: Sloppiness and emergent theories in physics, biology, and beyond</em>, J. Chem. Phys. 143 (2015) 010901.</td>
-<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span></td>
+<td>M. K. Transtrum, B. B. Machta, K. S. Brown, B. C. Daniels, C. R. Myers, J. P. Sethna, <em>Perspective: Sloppiness and emergent theories in physics, biology, and beyond</em>, J. Chem. Phys. 143 (2015) 010901.<br>
+<span class="m">doi: <a href="https://doi.org/10.1063/1.4923066">10.1063/1.4923066</a></span><br>
+<a href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">Source / publisher</a> · <a href="https://sethna.lassp.cornell.edu/pubPDF/SloppyReviewJCP.pdf">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: published</span></td>
 <td>The model manifold: the image of the configuration space in data space, its thin directions, and the manifold boundary approximation that reduces the model along them.</td>
 </tr>
 </tbody>
@@ -323,27 +364,38 @@ document.addEventListener("DOMContentLoaded", function () {
 <tbody>
 <tr id="cranmer2020" class="odd">
 <td><span class="m">cranmer2020</span></td>
-<td>K. Cranmer, J. Brehmer, G. Louppe, <em>The frontier of simulation-based inference</em>, Proc. Natl Acad. Sci. USA 117 (2020) 30055–30062.</td>
-<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span></td>
+<td>K. Cranmer, J. Brehmer, G. Louppe, <em>The frontier of simulation-based inference</em>, Proc. Natl Acad. Sci. USA 117 (2020) 30055–30062.<br>
+<span class="m">doi: <a href="https://doi.org/10.1073/pnas.1912789117">10.1073/pnas.1912789117</a></span><br>
+<a href="https://pnas.org/doi/full/10.1073/pnas.1912789117">Source / publisher</a> · <a href="https://arxiv.org/pdf/1911.01429">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: arXiv preprint</span></td>
 <td>Amortised inference: a network trained on simulations returns the posterior for any new measurement; the whole fibre, not one point.</td>
 </tr>
 <tr id="park2017" class="even">
 <td><span class="m">park2017</span></td>
-<td>W. B. Park, J. Chung, J. Jung, K. Sohn, S. P. Singh, M. Pyo, N. Shin, K.-S. Sohn, <em>Classification of crystal structure using a convolutional neural network</em>, IUCrJ 4 (2017) 486–494.</td>
-<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span></td>
+<td>W. B. Park, J. Chung, J. Jung, K. Sohn, S. P. Singh, M. Pyo, N. Shin, K.-S. Sohn, <em>Classification of crystal structure using a convolutional neural network</em>, IUCrJ 4 (2017) 486–494.<br>
+<span class="m">doi: <a href="https://doi.org/10.1107/S205225251700714X">10.1107/S205225251700714X</a></span><br>
+<a href="https://journals.iucr.org/paper?S205225251700714X">Source / publisher</a> · <a href="https://journals.iucr.org/m/issues/2017/04/00/fc5018/fc5018.pdf">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: published</span></td>
 <td>About 150 000 simulated powder patterns; crystal system, extinction group and space group classified at 95, 84 and 81 %: what a projection keeps of the symmetry.</td>
 </tr>
 <tr id="lee2020" class="odd">
 <td><span class="m">lee2020</span></td>
 <td>J.-W. Lee, W. B. Park, J. H. Lee, S. P. Singh, K.-S. Sohn, <em>A deep-learning technique for phase identification in multiphase inorganic compounds using synthetic XRD powder patterns</em>, Nature Commun. 11 (2020) 86.<br>
-<span class="m">doi: <a href="https://doi.org/10.1038/s41467-019-13749-3">10.1038/s41467-019-13749-3</a></span></td>
-<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span></td>
+<span class="m">doi: <a href="https://doi.org/10.1038/s41467-019-13749-3">10.1038/s41467-019-13749-3</a></span><br>
+<a href="https://www.nature.com/articles/s41467-019-13749-3">Source / publisher</a> · <a href="https://www.nature.com/articles/s41467-019-13749-3.pdf">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: published</span></td>
 <td>1.8 million synthetic patterns from 170 compounds; the knowledge is in the generator of the training set — T09 and T10 in practice.</td>
 </tr>
 <tr id="szymanski2021" class="even">
 <td><span class="m">szymanski2021</span></td>
-<td>N. J. Szymanski, C. J. Bartel, Y. Zeng, Q. Tu, G. Ceder, <em>Probabilistic deep learning approach to automate the interpretation of multi-phase diffraction spectra</em>, Chem. Mater. 33 (2021) 4204–4215.</td>
-<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span></td>
+<td>N. J. Szymanski, C. J. Bartel, Y. Zeng, Q. Tu, G. Ceder, <em>Probabilistic deep learning approach to automate the interpretation of multi-phase diffraction spectra</em>, Chem. Mater. 33 (2021) 4204–4215.<br>
+<span class="m">doi: <a href="https://doi.org/10.1021/acs.chemmater.1c01071">10.1021/acs.chemmater.1c01071</a></span><br>
+<a href="https://pubs.acs.org/doi/10.1021/acs.chemmater.1c01071">Source / publisher</a> · <a href="https://cjbartel.github.io/assets/papers/xrd.pdf">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: published</span></td>
 <td>Simulated spectra augmented with physics-informed perturbations; an ensemble that returns probabilities, not labels — the form the output must take when the problem is underdetermined.</td>
 </tr>
 </tbody>
@@ -351,6 +403,12 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 <h2 class="anchored">Infrared spectra and dielectric functions</h2><div class="table-wrap">
 <table class="sources caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Key</th>
@@ -362,20 +420,30 @@ document.addEventListener("DOMContentLoaded", function () {
 <tbody>
 <tr id="kuzmenko2005" class="odd">
 <td><span class="m">kuzmenko2005</span></td>
-<td>A. B. Kuzmenko, <em>Kramers–Kronig constrained variational analysis of optical spectra</em>, Rev. Sci. Instrum. 76 (2005) 083108.</td>
-<td><span class="status status-src-not-checked">not checked</span></td>
+<td>A. B. Kuzmenko, <em>Kramers–Kronig constrained variational analysis of optical spectra</em>, Rev. Sci. Instrum. 76 (2005) 083108.<br>
+<span class="m">doi: <a href="https://doi.org/10.1063/1.1979470">10.1063/1.1979470</a></span><br>
+<a href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of">Source / publisher</a> · <a href="https://access.archive-ouverte.unige.ch/access/metadata/00e285be-c97e-4c80-b59d-309c4b3a2009/download">Public full-text copy</a></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="m">Local PDF: published</span></td>
 <td>The dielectric function as a free, causal function anchored by a few oscillators: the data determine <span class="math inline">\(\varepsilon\)</span>(<span class="math inline">\(\omega\)</span>) on the measured range, not a unique set of oscillators.</td>
 </tr>
 <tr id="difes2026" class="even">
 <td><span class="m">difes2026</span></td>
-<td>J. M. Igartua, <em>difes: dielectric function, inversion, fitting, emissivity, simulation</em>, private repository <code>jmigartua/difes</code> and its site <code>ftir-ecosystem-site</code>, 2026.</td>
-<td><span class="status status-src-read">read</span> <span class="m">2026-10-14</span></td>
+<td>J. M. Igartua, <em>difes: dielectric function, inversion, fitting, emissivity, simulation</em>, private repository <code>jmigartua/difes</code> and its site <code>ftir-ecosystem-site</code>, 2026.<br>
+<a href="https://github.com/jmigartua/difes">Source / publisher</a></td>
+<td><span class="status status-src-read">read</span> <span class="m">2026-10-14</span><br>
+<span class="nc">Software/repository citation, not a paper. Existing project read status retained. No DOI or paper PDF expected; repository not cloned or independently audited in this reference check.</span><br>
+<span class="m">Software source; no paper PDF expected</span></td>
 <td>The third case's machinery: oscillator models, the Fresnel link, Kramers–Kronig with finite-range corrections, recipes (the expert's steps in a text file).</td>
 </tr>
 <tr id="gonzalezdearrieta2020" class="odd">
 <td><span class="m">gonzalezdearrieta2020</span></td>
-<td>I. González de Arrieta, <em>High-temperature infrared emissivity of materials for alternative energy applications</em>, PhD thesis, UPV/EHU, 2020.</td>
-<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span></td>
+<td>I. González de Arrieta, <em>High-temperature infrared emissivity of materials for alternative energy applications</em>, PhD thesis, UPV/EHU, 2020.<br>
+<a href="https://hdl.handle.net/10810/50263">Source / publisher</a><br>
+<span class="m">Reported deposit DOI: 10.13140/RG.2.2.14502.55365</span></td>
+<td><span class="status status-src-checked">checked</span> <span class="m">2026-10-14</span><br>
+<span class="nc">Thesis confirmed by EHU. ResearchGate reports a deposit DOI, recorded separately from independently verified publication DOIs. The ADDI handle and indexed PDF returned HTTP 404 during this audit; the thesis PDF is not local.</span><br>
+<span class="m">Full text not obtained</span></td>
 <td>The domain of the author of the ideas: emissivity measured directly at high temperature, and interpreted through dielectric-function models.</td>
 </tr>
 </tbody>
