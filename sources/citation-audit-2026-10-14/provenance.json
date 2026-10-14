@@ -1,0 +1,20 @@
+{
+  "title": "Citation support audit \u2014 14 October 2026",
+  "prepared_by": "Codex (AI assistant)",
+  "status": "Awaiting author review; proposals not applied",
+  "review_date": "2026-10-14",
+  "publication_date": "2026-10-14",
+  "website_commit_reviewed": "bcdd0903be508931384d24f672fe3cc9d1e17c25",
+  "audit_log": "L009",
+  "publication_log": "L010",
+  "claim_groups": 42,
+  "original_report_sha256": "5e0c3eed6beccd0b3a339684752899bea072ed1def2bd9bfec714132769f08f2",
+  "original_claim_records_sha256": "ef301e15cabebd35f657bec80fcc431f87e3827ad97ee742f8338a92a711c566",
+  "public_report_sha256": "cd09b60da602b98e1277a742c3b737bfae1046502ed0abd907a0fb1f0fc943ea",
+  "adaptations": [
+    "Public navigation replaces local file links",
+    "Local PDF locators retained as text; PDFs not redistributed",
+    "Authorship, review status, citation and archive provenance added",
+    "Mathematical typesetting adapted in the rendered page"
+  ]
+}
