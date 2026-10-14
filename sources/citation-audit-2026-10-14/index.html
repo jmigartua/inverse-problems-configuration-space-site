@@ -83,49 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../assets/styles/theme.css">
 <link rel="stylesheet" href="../../assets/styles/site.css">
@@ -176,668 +133,488 @@ window.Quarto = {
 </header>
 
 
-<article class="page-article">
-<h1 id="citation-support-audit-14-october-2026">Citation support audit — 14 October 2026</h1>
-<p><strong>Project review record · L009 / L010 · awaiting author review.</strong> Prepared by Codex (AI assistant) for this project. This is an AI-assisted assessment, not a peer-reviewed publication or an approved revision of the scientific pages. Its verdicts and proposed wording remain open to correction by the project authors.</p>
-<p><strong>Suggested citation:</strong> Codex (2026), <em>Citation support audit — 14 October 2026</em>, inverse-problems-configuration-space project, review record L009, public edition L010. No DOI assigned. Permanent URL: <a href="https://jmigartua.github.io/inverse-problems-configuration-space-site/sources/citation-audit-2026-10-14/">citation audit</a>.</p>
-<p><strong>Version and preservation:</strong> This report assesses website commit <code>bcdd0903be508931384d24f672fe3cc9d1e17c25</code>. Original claim labels C01–C42, assessments and proposed wording are retained. Navigation and mathematical typesetting are adapted for the website. File line numbers refer to the reviewed snapshot; website links open the current pages. Publishing this report does not apply its proposed corrections.</p>
-<p><a href="../../log/index.html#L010">Publication log (L010)</a> · <a href="../../log/index.html#L009">Original audit log (L009)</a> · <a href="../index.html">Sources</a> · <a href="report.md">Download this public report</a> · <a href="provenance.json">Archive provenance</a></p>
-<details>
-<summary>
-Browse the 42 findings
-</summary>
-<ul>
-<li><a href="#c01">C01 — Hadamard and the modern definition</a></li>
-<li><a href="#c02">C02 — Probabilistic inverse problems</a></li>
-<li><a href="#c03">C03 — Kaipio and Somersalo and approximation error</a></li>
-<li><a href="#c04">C04 — Kennedy and O’Hagan and physical parameter meaning</a></li>
-<li><a href="#c05">C05 — Bias and overconfidence from ignored discrepancy</a></li>
-<li><a href="#c06">C06 — Raue and the identifiability distinction</a></li>
-<li><a href="#c07">C07 — Homometry versus a linear null space</a></li>
-<li><a href="#c08">C08 — Rietveld profile refinement and forward-model certainty</a></li>
-<li><a href="#c09">C09 — What mode crystallography demonstrably provides</a></li>
-<li><a href="#c10">C10 — AMPLIMODES decomposition and refinement output</a></li>
-<li><a href="#c11">C11 — ISODISPLACE and orthonormal basis conventions</a></li>
-<li><a href="#c12">C12 — Primary-mode hierarchy and sparse priors</a></li>
-<li><a href="#c13">C13 — Symmetry modes do not necessarily diagonalize the data sensitivity</a></li>
-<li><a href="#c14">C14 — Amplitude magnitude is not uncertainty</a></li>
-<li><a href="#c15">C15 — Sloppy sensitivity spectra</a></li>
-<li><a href="#c16">C16 — A small singular value needs a parameter scale</a></li>
-<li><a href="#c17">C17 — Local Jacobian rank is not a complete structural-identifiability test</a></li>
-<li><a href="#c18">C18 — A likelihood region is not a posterior</a></li>
-<li><a href="#c19">C19 — The model-manifold description</a></li>
-<li><a href="#c20">C20 — Cranmer supports approximate amortized inference, not guaranteed recovery</a></li>
-<li><a href="#c21">C21 — Park dataset and accuracy figures</a></li>
-<li><a href="#c22">C22 — Lee dataset size and chemical scope</a></li>
-<li><a href="#c23">C23 — Szymanski probabilities are phase-classification confidence</a></li>
-<li><a href="#c24">C24 — The three ML papers are precedents, not the proposed mode-refinement pipeline</a></li>
-<li><a href="#c25">C25 — Kuzmenko’s background model and dense variational mesh</a></li>
-<li><a href="#c26">C26 — Phase recovery needs analytic and geometry conditions</a></li>
-<li><a href="#c27">C27 — Unmeasured spectral weight is not generically invisible</a></li>
-<li><a href="#c28">C28 — Oscillator non-identifiability is not universal</a></li>
-<li><a href="#c29">C29 — difes software claims and optical assumptions</a></li>
-<li><a href="#c30">C30 — A missing primary source for finite-range correction</a></li>
-<li><a href="#c31">C31 — The thesis cannot yet support a detailed technical claim</a></li>
-<li><a href="#c32">C32 — Daun experimental conditions and tabulated parameters</a></li>
-<li><a href="#c33">C33 — Daun surface scattering explanation is reversed</a></li>
-<li><a href="#c34">C34 — The LDLS sees the shoulder, not the 190 nm peak</a></li>
-<li><a href="#c35">C35 — Daun approximation-error sampling is not the stated prior range</a></li>
-<li><a href="#c36">C36 — Low-frequency Drude degeneracy is a limiting approximation</a></li>
-<li><a href="#c37">C37 — A surrogate does not automatically remove model error</a></li>
-<li><a href="#c38">C38 — Expected information gain is not determined by a Jacobian alone</a></li>
-<li><a href="#c39">C39 — The P1 diagnostic cannot identify all three failure types alone</a></li>
-<li><a href="#c40">C40 — Data availability and reproducibility claims</a></li>
-<li><a href="#c41">C41 — A covariance diagonal is not a conditional tube cross-section</a></li>
-<li><a href="#c42">C42 — Transferability and parameter-point dependence</a></li>
-</ul>
-</details>
+<article class="page-article audit">
+<h1>Citation support audit — 14 October 2026</h1>
+<div class="audit-notice"><strong>Project review record · L009 / L010 · awaiting author review.</strong> Prepared by Codex (AI assistant) for this project. This is an AI-assisted assessment, not a peer-reviewed publication or an approved revision of the scientific pages. Its verdicts and proposed wording remain open to correction by the project authors.</div>
+<dl class="audit-facts"><dt>Suggested citation</dt><dd>Codex (2026), <em>Citation support audit — 14 October 2026</em>, inverse-problems-configuration-space project, review record L009, public edition L010. No DOI assigned. Permanent URL: <a href="https://jmigartua.github.io/inverse-problems-configuration-space-site/sources/citation-audit-2026-10-14/">citation audit</a>.</dd><dt>Version and preservation</dt><dd>This report assesses website commit <code>bcdd0903be508931384d24f672fe3cc9d1e17c25</code>. Original claim labels C01–C42, assessments and proposed wording are retained. Navigation and mathematical typesetting are adapted for the website. File line numbers refer to the reviewed snapshot; website links open the current pages. Publishing this report does not apply its proposed corrections.</dd></dl>
+<p class="audit-links"><a href="../../log/index.html#L010">Publication log (L010)</a> · <a href="../../log/index.html#L009">Original audit log (L009)</a> · <a href="../index.html">Sources</a> · <a href="report.md">Download this public report</a> · <a href="provenance.json">Archive provenance</a></p>
 <p>Reviewed 14 October 2026 against website commit <code>bcdd090</code>.</p>
 <p>Several references support the website’s factual summaries, but the surrounding argument sometimes makes stronger claims than those sources establish. The corrections concern both fidelity to a paper and the distinction between an established result and a proposed extension. A verified DOI is not evidence that a particular sentence is supported.</p>
 <p>All 21 source-table entries and their associated uses in the Discourse, three Cases and Programme; 42 claim groups, including closely related mathematical extrapolations. The founding brief is preserved as attributed ideas. This is a targeted citation and claim audit, not independent replication of every paper or a proof audit of every sentence.</p>
 <p>Relevant passages in 14 local PDFs; four author/publisher abstracts for unavailable articles; indirect attribution for the unavailable Kaipio book; versioned difes documentation/code; the thesis remains bibliographic only. PDF page numbers count repository covers. Proposed wording is for review and has not been applied to the scientific pages.</p>
 <h2 id="findings-at-a-glance" class="anchored">Findings at a glance</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Verdict</th>
-<th style="text-align: right;">Claim groups</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Supported within stated scope</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="even">
-<td>Needs qualification or a better citation</td>
-<td style="text-align: right;">13</td>
-</tr>
-<tr class="odd">
-<td>Incorrect as written</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="even">
-<td>Not fully verified</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td>Proposal presented too strongly</td>
-<td style="text-align: right;">4</td>
-</tr>
-</tbody>
-</table>
+<div class="verdict-strip"><div class="vcount v-ok"><span class="n">11</span><span class="k">Supported within stated scope</span></div><div class="vcount v-warn"><span class="n">13</span><span class="k">Needs qualification or a better citation</span></div><div class="vcount v-bad"><span class="n">11</span><span class="k">Incorrect as written</span></div><div class="vcount v-open"><span class="n">3</span><span class="k">Not fully verified</span></div><div class="vcount v-strong"><span class="n">4</span><span class="k">Proposal presented too strongly</span></div></div>
 <p>These counts concern the 42 selected claim groups, not the quality of 42 papers. A paper can support one sentence and fail to support another. “Incorrect” applies to the website wording; it does not imply that the cited paper is incorrect.</p>
+<h2 id="the-42-findings" class="anchored">The 42 findings</h2>
+<ol class="claim-index"><li class="v-warn"><a href="#c01"><span class="cid">C01</span>Hadamard and the modern definition</a></li><li class="v-ok"><a href="#c02"><span class="cid">C02</span>Probabilistic inverse problems</a></li><li class="v-open"><a href="#c03"><span class="cid">C03</span>Kaipio and Somersalo and approximation error</a></li><li class="v-warn"><a href="#c04"><span class="cid">C04</span>Kennedy and O’Hagan and physical parameter meaning</a></li><li class="v-ok"><a href="#c05"><span class="cid">C05</span>Bias and overconfidence from ignored discrepancy</a></li><li class="v-ok"><a href="#c06"><span class="cid">C06</span>Raue and the identifiability distinction</a></li><li class="v-warn"><a href="#c07"><span class="cid">C07</span>Homometry versus a linear null space</a></li><li class="v-warn"><a href="#c08"><span class="cid">C08</span>Rietveld profile refinement and forward-model certainty</a></li><li class="v-ok"><a href="#c09"><span class="cid">C09</span>What mode crystallography demonstrably provides</a></li><li class="v-ok"><a href="#c10"><span class="cid">C10</span>AMPLIMODES decomposition and refinement output</a></li><li class="v-warn"><a href="#c11"><span class="cid">C11</span>ISODISPLACE and orthonormal basis conventions</a></li><li class="v-warn"><a href="#c12"><span class="cid">C12</span>Primary-mode hierarchy and sparse priors</a></li><li class="v-bad"><a href="#c13"><span class="cid">C13</span>Symmetry modes do not necessarily diagonalize the data sensitivity</a></li><li class="v-bad"><a href="#c14"><span class="cid">C14</span>Amplitude magnitude is not uncertainty</a></li><li class="v-ok"><a href="#c15"><span class="cid">C15</span>Sloppy sensitivity spectra</a></li><li class="v-bad"><a href="#c16"><span class="cid">C16</span>A small singular value needs a parameter scale</a></li><li class="v-bad"><a href="#c17"><span class="cid">C17</span>Local Jacobian rank is not a complete structural-identifiability test</a></li><li class="v-bad"><a href="#c18"><span class="cid">C18</span>A likelihood region is not a posterior</a></li><li class="v-ok"><a href="#c19"><span class="cid">C19</span>The model-manifold description</a></li><li class="v-warn"><a href="#c20"><span class="cid">C20</span>Cranmer supports approximate amortized inference, not guaranteed recovery</a></li><li class="v-ok"><a href="#c21"><span class="cid">C21</span>Park dataset and accuracy figures</a></li><li class="v-ok"><a href="#c22"><span class="cid">C22</span>Lee dataset size and chemical scope</a></li><li class="v-warn"><a href="#c23"><span class="cid">C23</span>Szymanski probabilities are phase-classification confidence</a></li><li class="v-warn"><a href="#c24"><span class="cid">C24</span>The three ML papers are precedents, not the proposed mode-refinement pipeline</a></li><li class="v-warn"><a href="#c25"><span class="cid">C25</span>Kuzmenko’s background model and dense variational mesh</a></li><li class="v-warn"><a href="#c26"><span class="cid">C26</span>Phase recovery needs analytic and geometry conditions</a></li><li class="v-bad"><a href="#c27"><span class="cid">C27</span>Unmeasured spectral weight is not generically invisible</a></li><li class="v-bad"><a href="#c28"><span class="cid">C28</span>Oscillator non-identifiability is not universal</a></li><li class="v-ok"><a href="#c29"><span class="cid">C29</span>difes software claims and optical assumptions</a></li><li class="v-warn"><a href="#c30"><span class="cid">C30</span>A missing primary source for finite-range correction</a></li><li class="v-open"><a href="#c31"><span class="cid">C31</span>The thesis cannot yet support a detailed technical claim</a></li><li class="v-ok"><a href="#c32"><span class="cid">C32</span>Daun experimental conditions and tabulated parameters</a></li><li class="v-bad"><a href="#c33"><span class="cid">C33</span>Daun surface scattering explanation is reversed</a></li><li class="v-bad"><a href="#c34"><span class="cid">C34</span>The LDLS sees the shoulder, not the 190 nm peak</a></li><li class="v-bad"><a href="#c35"><span class="cid">C35</span>Daun approximation-error sampling is not the stated prior range</a></li><li class="v-warn"><a href="#c36"><span class="cid">C36</span>Low-frequency Drude degeneracy is a limiting approximation</a></li><li class="v-strong"><a href="#c37"><span class="cid">C37</span>A surrogate does not automatically remove model error</a></li><li class="v-strong"><a href="#c38"><span class="cid">C38</span>Expected information gain is not determined by a Jacobian alone</a></li><li class="v-strong"><a href="#c39"><span class="cid">C39</span>The P1 diagnostic cannot identify all three failure types alone</a></li><li class="v-open"><a href="#c40"><span class="cid">C40</span>Data availability and reproducibility claims</a></li><li class="v-bad"><a href="#c41"><span class="cid">C41</span>A covariance diagonal is not a conditional tube cross-section</a></li><li class="v-strong"><a href="#c42"><span class="cid">C42</span>Transferability and parameter-point dependence</a></li></ol>
 <h2 id="priority-corrections" class="anchored">Priority corrections</h2>
-<ul>
-<li><a href="#c33">C33</a>: Daun’s treatment of surface scattering is reversed in the website.</li>
-<li><a href="#c25">C25</a>: Kuzmenko’s background model and dense variational mesh need to be distinguished.</li>
-<li><a href="#c26">C26</a>: Reflection phase recovery omits necessary analytic and geometry conditions.</li>
-<li><a href="#c13">C13</a>: A symmetry basis does not automatically remove experimental ambiguity.</li>
-<li><a href="#c17">C17</a>: Local Jacobian rank, global ambiguity and continuous non-identifiability are conflated.</li>
-<li><a href="#c18">C18</a>: The data-misfit tube is a set, not a posterior distribution.</li>
-<li><a href="#c35">C35</a>: Daun’s printed approximation-error ranges do not match its prior ranges.</li>
-</ul>
+<ul class="k-list"><li><a class="cref v-bad" href="#c33">C33</a> Daun’s treatment of surface scattering is reversed in the website.</li><li><a class="cref v-warn" href="#c25">C25</a> Kuzmenko’s background model and dense variational mesh need to be distinguished.</li><li><a class="cref v-warn" href="#c26">C26</a> Reflection phase recovery omits necessary analytic and geometry conditions.</li><li><a class="cref v-bad" href="#c13">C13</a> A symmetry basis does not automatically remove experimental ambiguity.</li><li><a class="cref v-bad" href="#c17">C17</a> Local Jacobian rank, global ambiguity and continuous non-identifiability are conflated.</li><li><a class="cref v-bad" href="#c18">C18</a> The data-misfit tube is a set, not a posterior distribution.</li><li><a class="cref v-bad" href="#c35">C35</a> Daun’s printed approximation-error ranges do not match its prior ranges.</li></ul>
 <h2 id="source-coverage" class="anchored">Source coverage</h2>
 <p>PDF page numbers below are file page numbers, including covers. Printed page numbers and sections appear in the detailed findings. Public links open publisher or repository records. PDF page locators refer to the local copies reviewed; those copies are not hosted here. Reading selected passages does not mean that a whole book or article has been read in full.</p>
-<table class="caption-top">
+<div class="table-wrap">
+<table class="coverage caption-top">
 <thead>
 <tr class="header">
-<th>Source</th>
-<th>Evidence available for this audit</th>
-<th>Findings</th>
+<th data-quarto-table-cell-role="th">Source</th>
+<th data-quarto-table-cell-role="th">Evidence available for this audit</th>
+<th data-quarto-table-cell-role="th">Findings</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019</a></td>
-<td>full-text passage; PDF pages 2, 4, 6, 7, 8, 9, 10</td>
-<td><a href="#c03">C03</a>, <a href="#c18">C18</a>, <a href="#c32">C32</a>, <a href="#c33">C33</a>, <a href="#c34">C34</a>, <a href="#c35">C35</a>, <a href="#c36">C36</a>, <a href="#c37">C37</a>, <a href="#c38">C38</a>, <a href="#c40">C40</a></td>
+<td><span class="srcpair"><a href="../index.html#daun2019" class="srckey" title="daun2019 in the Sources table">daun2019</a><a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 2, 4, 6, 7, 8, 9, 10</span></td>
+<td class="finds"><a href="#c03" class="cref v-open">C03</a> <a href="#c18" class="cref v-bad">C18</a> <a href="#c32" class="cref v-ok">C32</a> <a href="#c33" class="cref v-bad">C33</a> <a href="#c34" class="cref v-bad">C34</a> <a href="#c35" class="cref v-bad">C35</a> <a href="#c36" class="cref v-warn">C36</a> <a href="#c37" class="cref v-strong">C37</a> <a href="#c38" class="cref v-strong">C38</a> <a href="#c40" class="cref v-open">C40</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://journals.iucr.org/paper?S0108767310016247">perezmato2010</a></td>
-<td>full-text passage; PDF pages 1, 7, 8</td>
-<td><a href="#c09">C09</a>, <a href="#c12">C12</a>, <a href="#c13">C13</a>, <a href="#c14">C14</a></td>
+<td><span class="srcpair"><a href="../index.html#perezmato2010" class="srckey" title="perezmato2010 in the Sources table">perezmato2010</a><a href="https://journals.iucr.org/paper?S0108767310016247" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 1, 7, 8</span></td>
+<td class="finds"><a href="#c09" class="cref v-ok">C09</a> <a href="#c12" class="cref v-warn">C12</a> <a href="#c13" class="cref v-bad">C13</a> <a href="#c14" class="cref v-bad">C14</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://journals.iucr.org/paper?S0021889809028064">orobengoa2009</a></td>
-<td>full-text passage; PDF pages 1, 4, 5, 13</td>
-<td><a href="#c10">C10</a>, <a href="#c11">C11</a></td>
+<td><span class="srcpair"><a href="../index.html#orobengoa2009" class="srckey" title="orobengoa2009 in the Sources table">orobengoa2009</a><a href="https://journals.iucr.org/paper?S0021889809028064" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 1, 4, 5, 13</span></td>
+<td class="finds"><a href="#c10" class="cref v-ok">C10</a> <a href="#c11" class="cref v-warn">C11</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://journals.iucr.org/paper?S0021889806014075">campbell2006</a></td>
-<td>full-text passage; PDF pages 5, 8</td>
-<td><a href="#c11">C11</a></td>
+<td><span class="srcpair"><a href="../index.html#campbell2006" class="srckey" title="campbell2006 in the Sources table">campbell2006</a><a href="https://journals.iucr.org/paper?S0021889806014075" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 5, 8</span></td>
+<td class="finds"><a href="#c11" class="cref v-warn">C11</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://onlinelibrary.wiley.com/doi/abs/10.1107/S0021889869006558">rietveld1969</a></td>
-<td>abstract only</td>
-<td><a href="#c08">C08</a></td>
+<td><span class="srcpair"><a href="../index.html#rietveld1969" class="srckey" title="rietveld1969 in the Sources table">rietveld1969</a><a href="https://onlinelibrary.wiley.com/doi/abs/10.1107/S0021889869006558" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-warn" title="abstract only">abstract only</span></td>
+<td class="finds"><a href="#c08" class="cref v-warn">C08</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://journals.aps.org/pr/abstract/10.1103/PhysRev.65.195">patterson1944</a></td>
-<td>abstract only</td>
-<td><a href="#c07">C07</a>, <a href="#c17">C17</a></td>
+<td><span class="srcpair"><a href="../index.html#patterson1944" class="srckey" title="patterson1944 in the Sources table">patterson1944</a><a href="https://journals.aps.org/pr/abstract/10.1103/PhysRev.65.195" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-warn" title="abstract only">abstract only</span></td>
+<td class="finds"><a href="#c07" class="cref v-warn">C07</a> <a href="#c17" class="cref v-bad">C17</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://illposed.net/hadamard.pdf">hadamard1902</a></td>
-<td>full-text passage; PDF pages 1, 2</td>
-<td><a href="#c01">C01</a></td>
+<td><span class="srcpair"><a href="../index.html#hadamard1902" class="srckey" title="hadamard1902 in the Sources table">hadamard1902</a><a href="https://illposed.net/hadamard.pdf" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 1, 2</span></td>
+<td class="finds"><a href="#c01" class="cref v-warn">C01</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://epubs.siam.org/doi/book/10.1137/1.9780898717921">tarantola2005</a></td>
-<td>full-text passage; PDF pages 13, 49</td>
-<td><a href="#c02">C02</a>, <a href="#c18">C18</a>, <a href="#c38">C38</a></td>
+<td><span class="srcpair"><a href="../index.html#tarantola2005" class="srckey" title="tarantola2005 in the Sources table">tarantola2005</a><a href="https://epubs.siam.org/doi/book/10.1137/1.9780898717921" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 13, 49</span></td>
+<td class="finds"><a href="#c02" class="cref v-ok">C02</a> <a href="#c18" class="cref v-bad">C18</a> <a href="#c38" class="cref v-strong">C38</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://link.springer.com/10.1007/b138659">kaipio2005</a></td>
-<td>indirect attribution only</td>
-<td><a href="#c03">C03</a></td>
+<td><span class="srcpair"><a href="../index.html#kaipio2005" class="srckey" title="kaipio2005 in the Sources table">kaipio2005</a><a href="https://link.springer.com/10.1007/b138659" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-bad" title="indirect attribution only">indirect</span></td>
+<td class="finds"><a href="#c03" class="cref v-open">C03</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://academic.oup.com/jrsssb/article/63/3/425/7083367">kennedy2001</a></td>
-<td>abstract only</td>
-<td><a href="#c04">C04</a></td>
+<td><span class="srcpair"><a href="../index.html#kennedy2001" class="srckey" title="kennedy2001 in the Sources table">kennedy2001</a><a href="https://academic.oup.com/jrsssb/article/63/3/425/7083367" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-warn" title="abstract only">abstract only</span></td>
+<td class="finds"><a href="#c04" class="cref v-warn">C04</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://iopscience.iop.org/article/10.1088/0266-5611/30/11/114007">brynjarsdottir2014</a></td>
-<td>full-text passage; PDF pages 1, 3</td>
-<td><a href="#c04">C04</a>, <a href="#c05">C05</a>, <a href="#c39">C39</a></td>
+<td><span class="srcpair"><a href="../index.html#brynjarsdottir2014" class="srckey" title="brynjarsdottir2014 in the Sources table">brynjarsdottir2014</a><a href="https://iopscience.iop.org/article/10.1088/0266-5611/30/11/114007" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 1, 3</span></td>
+<td class="finds"><a href="#c04" class="cref v-warn">C04</a> <a href="#c05" class="cref v-ok">C05</a> <a href="#c39" class="cref v-strong">C39</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://pubmed.ncbi.nlm.nih.gov/19505944/">raue2009</a></td>
-<td>abstract only</td>
-<td><a href="#c06">C06</a>, <a href="#c17">C17</a>, <a href="#c39">C39</a></td>
+<td><span class="srcpair"><a href="../index.html#raue2009" class="srckey" title="raue2009 in the Sources table">raue2009</a><a href="https://pubmed.ncbi.nlm.nih.gov/19505944/" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-warn" title="abstract only">abstract only</span></td>
+<td class="finds"><a href="#c06" class="cref v-ok">C06</a> <a href="#c17" class="cref v-bad">C17</a> <a href="#c39" class="cref v-strong">C39</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://dx.plos.org/10.1371/journal.pcbi.0030189">gutenkunst2007</a></td>
-<td>full-text passage; PDF pages 2, 3</td>
-<td><a href="#c14">C14</a>, <a href="#c15">C15</a>, <a href="#c41">C41</a></td>
+<td><span class="srcpair"><a href="../index.html#gutenkunst2007" class="srckey" title="gutenkunst2007 in the Sources table">gutenkunst2007</a><a href="https://dx.plos.org/10.1371/journal.pcbi.0030189" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 2, 3</span></td>
+<td class="finds"><a href="#c14" class="cref v-bad">C14</a> <a href="#c15" class="cref v-ok">C15</a> <a href="#c41" class="cref v-bad">C41</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">transtrum2015</a></td>
-<td>full-text passage; PDF pages 3, 5, 6</td>
-<td><a href="#c13">C13</a>, <a href="#c15">C15</a>, <a href="#c16">C16</a>, <a href="#c19">C19</a>, <a href="#c39">C39</a>, <a href="#c42">C42</a></td>
+<td><span class="srcpair"><a href="../index.html#transtrum2015" class="srckey" title="transtrum2015 in the Sources table">transtrum2015</a><a href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 3, 5, 6</span></td>
+<td class="finds"><a href="#c13" class="cref v-bad">C13</a> <a href="#c15" class="cref v-ok">C15</a> <a href="#c16" class="cref v-bad">C16</a> <a href="#c19" class="cref v-ok">C19</a> <a href="#c39" class="cref v-strong">C39</a> <a href="#c42" class="cref v-strong">C42</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://pnas.org/doi/full/10.1073/pnas.1912789117">cranmer2020</a></td>
-<td>full-text passage; PDF pages 7, 8</td>
-<td><a href="#c20">C20</a>, <a href="#c37">C37</a>, <a href="#c42">C42</a></td>
+<td><span class="srcpair"><a href="../index.html#cranmer2020" class="srckey" title="cranmer2020 in the Sources table">cranmer2020</a><a href="https://pnas.org/doi/full/10.1073/pnas.1912789117" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 7, 8</span></td>
+<td class="finds"><a href="#c20" class="cref v-warn">C20</a> <a href="#c37" class="cref v-strong">C37</a> <a href="#c42" class="cref v-strong">C42</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://journals.iucr.org/paper?S205225251700714X">park2017</a></td>
-<td>full-text passage; PDF pages 1, 3, 5</td>
-<td><a href="#c21">C21</a>, <a href="#c24">C24</a></td>
+<td><span class="srcpair"><a href="../index.html#park2017" class="srckey" title="park2017 in the Sources table">park2017</a><a href="https://journals.iucr.org/paper?S205225251700714X" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 1, 3, 5</span></td>
+<td class="finds"><a href="#c21" class="cref v-ok">C21</a> <a href="#c24" class="cref v-warn">C24</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://www.nature.com/articles/s41467-019-13749-3">lee2020</a></td>
-<td>full-text passage; PDF pages 1, 2</td>
-<td><a href="#c22">C22</a>, <a href="#c24">C24</a></td>
+<td><span class="srcpair"><a href="../index.html#lee2020" class="srckey" title="lee2020 in the Sources table">lee2020</a><a href="https://www.nature.com/articles/s41467-019-13749-3" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 1, 2</span></td>
+<td class="finds"><a href="#c22" class="cref v-ok">C22</a> <a href="#c24" class="cref v-warn">C24</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://pubs.acs.org/doi/10.1021/acs.chemmater.1c01071">szymanski2021</a></td>
-<td>full-text passage; PDF pages 3, 4</td>
-<td><a href="#c23">C23</a>, <a href="#c24">C24</a></td>
+<td><span class="srcpair"><a href="../index.html#szymanski2021" class="srckey" title="szymanski2021 in the Sources table">szymanski2021</a><a href="https://pubs.acs.org/doi/10.1021/acs.chemmater.1c01071" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 3, 4</span></td>
+<td class="finds"><a href="#c23" class="cref v-warn">C23</a> <a href="#c24" class="cref v-warn">C24</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of">kuzmenko2005</a></td>
-<td>full-text passage; PDF pages 3, 5, 6</td>
-<td><a href="#c25">C25</a>, <a href="#c26">C26</a>, <a href="#c27">C27</a>, <a href="#c28">C28</a></td>
+<td><span class="srcpair"><a href="../index.html#kuzmenko2005" class="srckey" title="kuzmenko2005 in the Sources table">kuzmenko2005</a><a href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="full-text passage">full text</span> <span class="m">PDF pages 3, 5, 6</span></td>
+<td class="finds"><a href="#c25" class="cref v-warn">C25</a> <a href="#c26" class="cref v-warn">C26</a> <a href="#c27" class="cref v-bad">C27</a> <a href="#c28" class="cref v-bad">C28</a></td>
 </tr>
 <tr class="even">
-<td><a href="https://github.com/jmigartua/difes">difes2026</a></td>
-<td>versioned software source</td>
-<td><a href="#c29">C29</a>, <a href="#c30">C30</a></td>
+<td><span class="srcpair"><a href="../index.html#difes2026" class="srckey" title="difes2026 in the Sources table">difes2026</a><a href="https://github.com/jmigartua/difes" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-ok" title="versioned software source">software source</span></td>
+<td class="finds"><a href="#c29" class="cref v-ok">C29</a> <a href="#c30" class="cref v-warn">C30</a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://hdl.handle.net/10810/50263">gonzalezdearrieta2020</a></td>
-<td>bibliographic context only</td>
-<td><a href="#c31">C31</a></td>
+<td><span class="srcpair"><a href="../index.html#gonzalezdearrieta2020" class="srckey" title="gonzalezdearrieta2020 in the Sources table">gonzalezdearrieta2020</a><a href="https://hdl.handle.net/10810/50263" class="ev-ext">record</a></span></td>
+<td><span class="ev-kind k-open" title="bibliographic context only">bibliographic only</span></td>
+<td class="finds"><a href="#c31" class="cref v-open">C31</a></td>
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="claim-by-claim-assessment" class="anchored">Claim by claim assessment</h2>
-<h3 id="c01" class="anchored">C01</h3>
-<p><strong>Hadamard and the modern definition</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> Hadamard 1902 supplies existence, uniqueness and continuous dependence; an underdetermined inverse problem fails the second and third.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:70</a></p>
-<p><strong>Evidence and assessment:</strong> The original scan opens on printed p.&nbsp;49 by explaining bien posé in terms of possibility and determinacy. It is an appropriate historical reference, but the modern three-part formulation needs a precise modern source. Non-uniqueness alone does not establish a separate instability result for a chosen regularized solution.</p>
-<ul>
-<li>Printed pp.&nbsp;49–50; opening definition and Cauchy/Dirichlet discussion (full-text passage). <a href="https://illposed.net/hadamard.pdf">hadamard1902 — source</a> · PDF page 1 (reviewed local copy) · PDF page 2 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Hadamard provides a historical discussion of well-posedness. In the modern formulation, existence, uniqueness and continuous dependence are separate requirements; non-uniqueness violates uniqueness. Add a modern definition with its spaces and topology.</p>
-<h3 id="c02" class="anchored">C02</h3>
-<p><strong>Probabilistic inverse problems</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> Tarantola represents the inverse solution as a probability distribution over models.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:79</a></p>
-<p><strong>Evidence and assessment:</strong> The preface explicitly describes the update from prior to posterior, and §1.5 gives posterior density proportional to prior density times likelihood. This supports the stated use.</p>
-<ul>
-<li>Preface p.&nbsp;xi; §1.5 p.&nbsp;35, Eqs. (1.94)–(1.100) (full-text passage). <a href="https://epubs.siam.org/doi/book/10.1137/1.9780898717921">tarantola2005 — source</a> · <a href="https://doi.org/10.1137/1.9780898717921">DOI 10.1137/1.9780898717921</a> · PDF page 13 (reviewed local copy) · PDF page 49 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Retain; cite the preface, p.&nbsp;xi, and §1.5, p.&nbsp;35, Eqs. (1.94)–(1.100).</p>
-<h3 id="c03" class="anchored">C03</h3>
-<p><strong>Kaipio and Somersalo and approximation error</strong></p>
-<p><strong>Verdict:</strong> Not fully verified.</p>
-<p><strong>Website claim:</strong> Kaipio and Somersalo supply the mean-and-covariance approximation-error method used by Daun.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:88</a></p>
-<p><strong>Evidence and assessment:</strong> Daun p.&nbsp;152 explicitly attributes the Gaussian approximation-error construction to reference [40]. This verifies Daun’s use and attribution. The Kaipio–Somersalo book itself is unavailable locally, so its exact chapter and formulation have not been independently checked.</p>
-<ul>
-<li>Full book unavailable (indirect attribution only). <a href="https://link.springer.com/10.1007/b138659">kaipio2005 — source</a> · <a href="https://doi.org/10.1007/b138659">DOI 10.1007/b138659</a></li>
-<li>Printed p.&nbsp;152, discussion of Eq. (18) (full-text passage). <a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019 — source</a> · <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">DOI 10.1016/j.jqsrt.2019.01.021</a> · PDF page 7 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Daun et al., p.&nbsp;152, Eq. (18), use an approximation-error distribution following Kaipio and Somersalo. Retain the book as a secondary attribution until its relevant pages are obtained.</p>
-<h3 id="c04" class="anchored">C04</h3>
-<p><strong>Kennedy and O’Hagan and physical parameter meaning</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> The parameters lose their physical meaning when discrepancy is omitted.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:96</a></p>
-<p><strong>Evidence and assessment:</strong> The publisher summary supports Bayesian calibration with model discrepancy and parameter uncertainty. It does not establish the unconditional statement that all calibrated parameters lose physical meaning. Brynjarsdóttir and O’Hagan directly examine bias and confounding and are the more precise source for that warning.</p>
-<ul>
-<li>Publisher summary (abstract only). <a href="https://academic.oup.com/jrsssb/article/63/3/425/7083367">kennedy2001 — source</a> · <a href="https://doi.org/10.1111/1467-9868.00294">DOI 10.1111/1467-9868.00294</a></li>
-<li>Author manuscript abstract and p.&nbsp;3 principal findings (full-text passage). <a href="https://iopscience.iop.org/article/10.1088/0266-5611/30/11/114007">brynjarsdottir2014 — source</a> · <a href="https://doi.org/10.1088/0266-5611/30/11/114007">DOI 10.1088/0266-5611/30/11/114007</a> · PDF page 1 (reviewed local copy) · PDF page 3 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Ignoring a nonzero model discrepancy can bias estimates of physical parameters. Adding a discrepancy term does not by itself identify those parameters; informative assumptions about discrepancy may be needed.</p>
-<h3 id="c05" class="anchored">C05</h3>
-<p><strong>Bias and overconfidence from ignored discrepancy</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> Ignoring model discrepancy can produce biased and overconfident parameter inference.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:105</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:24</a></p>
-<p><strong>Evidence and assessment:</strong> The manuscript abstract and principal findings support this claim, and also warn that a flexible discrepancy function is confounded with calibration parameters. The website’s main warning is sound when stated conditionally.</p>
-<ul>
-<li>Manuscript pp.&nbsp;1 and 3; §2 gives the observation model (full-text passage). <a href="https://iopscience.iop.org/article/10.1088/0266-5611/30/11/114007">brynjarsdottir2014 — source</a> · <a href="https://doi.org/10.1088/0266-5611/30/11/114007">DOI 10.1088/0266-5611/30/11/114007</a> · PDF page 1 (reviewed local copy) · PDF page 3 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Retain “can” rather than an unconditional “are”; add that discrepancy modelling requires physically meaningful priors when physical parameter recovery is the goal.</p>
-<h3 id="c06" class="anchored">C06</h3>
-<p><strong>Raue and the identifiability distinction</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> Raue distinguishes structural from practical non-identifiability and uses profile likelihood.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:113</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:18</a></p>
-<p><strong>Evidence and assessment:</strong> The author abstract reproduced in PubMed explicitly supports these three points: structural functional relationships, practical limitations from data quantity and quality, and profile-likelihood confidence intervals. Only the abstract was accessible; it does not validate all later Jacobian claims on the website.</p>
-<ul>
-<li>Author abstract, Results (abstract only). <a href="https://pubmed.ncbi.nlm.nih.gov/19505944/">raue2009 — source</a> · <a href="https://doi.org/10.1093/bioinformatics/btp358">DOI 10.1093/bioinformatics/btp358</a></li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Retain the terminology citation. Mark the evidence as abstract-level; verify detailed algorithmic claims against the full article before assigning page-level support.</p>
-<h3 id="c07" class="anchored">C07</h3>
-<p><strong>Homometry versus a linear null space</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> Homometric structures give identical intensities and constitute an exact null space.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:59</a>; <a href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:20</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:20</a></p>
-<p><strong>Evidence and assessment:</strong> Patterson’s publisher abstract supports distinct non-congruent point sets with the same vector-distance set. It supports non-uniqueness, not the stronger characterization as a linear null space or necessarily a continuous family. For weighted atomic species the relevant equality is the weighted autocorrelation, not an unweighted set of vectors alone.</p>
-<ul>
-<li>Publisher abstract (abstract only). <a href="https://journals.aps.org/pr/abstract/10.1103/PhysRev.65.195">patterson1944 — source</a> · <a href="https://doi.org/10.1103/PhysRev.65.195">DOI 10.1103/PhysRev.65.195</a></li>
-</ul>
-<p><strong>Independent reasoning:</strong> A nonlinear map can have disconnected preimages without a positive-dimensional fibre. For <span class="math inline">F(x)=x^2</span>, <span class="math inline">F^{-1}(1)=\{-1,+1\}</span>, while <span class="math inline">F'(\pm1)</span> is nonzero.</p>
-<p><strong>Proposed wording or action:</strong> Homometric structures provide distinct solutions with the same diffraction intensities. Describe these as exact ambiguities; reserve “null space” for a linear map or its local Jacobian.</p>
-<h3 id="c08" class="anchored">C08</h3>
-<p><strong>Rietveld profile refinement and forward-model certainty</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> Rietveld supplies profile least squares, and nothing in the forward map is in doubt.</p>
-<p><strong>Website locations:</strong> <a href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:16</a>; <a href="../index.html">ecosystem/data/sources.yml:51</a></p>
-<p><strong>Evidence and assessment:</strong> The original publisher abstract supports direct use of step-scan neutron profile intensities in least-squares refinement and parameter constraints. It does not support the absolute assertion of a doubt-free forward model. Background, peak shapes, preferred orientation, microstructure and missing phases remain modelling choices.</p>
-<ul>
-<li>Original publisher abstract (abstract only). <a href="https://onlinelibrary.wiley.com/doi/abs/10.1107/S0021889869006558">rietveld1969 — source</a> · <a href="https://doi.org/10.1107/S0021889869006558">DOI 10.1107/S0021889869006558</a></li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Rietveld refinement fits calculated profile intensities to observed powder data by least squares. Its physical and instrumental model must still be assessed for adequacy.</p>
-<h3 id="c09" class="anchored">C09</h3>
-<p><strong>What mode crystallography demonstrably provides</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> Mode analysis exposes hidden structural correlations, separates important and marginal degrees of freedom, and can reduce effective positional parameters.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:25</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:39</a></p>
-<p><strong>Evidence and assessment:</strong> These uses are stated in Perez-Mato et al.’s abstract and illustrated in the paper. The citation fits this sentence well.</p>
-<ul>
-<li>Printed p.&nbsp;558, abstract and introduction (full-text passage). <a href="https://journals.iucr.org/paper?S0108767310016247">perezmato2010 — source</a> · <a href="https://doi.org/10.1107/S0108767310016247">DOI 10.1107/S0108767310016247</a> · PDF page 1 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Retain with a locator to p.&nbsp;558 and the relevant worked structural example; distinguish this supported description from the later statistical-identifiability extrapolations.</p>
-<h3 id="c10" class="anchored">C10</h3>
-<p><strong>AMPLIMODES decomposition and refinement output</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> AMPLIMODES decomposes a distortion relative to a parent and supplies mode amplitudes usable in refinement.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:34</a>; <a href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:26</a></p>
-<p><strong>Evidence and assessment:</strong> The paper describes the parent/distorted-structure input and symmetry-mode decomposition. Its final section explicitly describes FullProf-compatible output using basis-mode amplitudes as alternative positional parameters.</p>
-<ul>
-<li>Printed pp.&nbsp;820 and 832 (full-text passage). <a href="https://journals.iucr.org/paper?S0021889809028064">orobengoa2009 — source</a> · <a href="https://doi.org/10.1107/S0021889809028064">DOI 10.1107/S0021889809028064</a> · PDF page 1 (reviewed local copy) · PDF page 13 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Retain; cite pp.&nbsp;820 and 832, especially the paragraph on AMPLIMODES–FullProf output.</p>
-<h3 id="c11" class="anchored">C11</h3>
-<p><strong>ISODISPLACE and orthonormal basis conventions</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> The mode decomposition is presented generically as an orthonormal change of basis, with the same number of independent coordinates.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:43</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:40</a></p>
-<p><strong>Evidence and assessment:</strong> Campbell et al.&nbsp;support an invertible change of basis within the chosen distortion space and equal independent degrees of freedom. They also note that their CLIROP modes need not be mutually orthogonal in non-rectangular cells. AMPLIMODES adopts an orthonormal convention. Neither statement means that selecting a subgroup or freezing modes preserves the original unrestricted space.</p>
-<ul>
-<li>Printed pp.&nbsp;610 and 613; CLIROP caveat and basis transformation (full-text passage). <a href="https://journals.iucr.org/paper?S0021889806014075">campbell2006 — source</a> · <a href="https://doi.org/10.1107/S0021889806014075">DOI 10.1107/S0021889806014075</a> · PDF page 5 (reviewed local copy) · PDF page 8 (reviewed local copy)</li>
-<li>Printed pp.&nbsp;823–824, basis normalization (full-text passage). <a href="https://journals.iucr.org/paper?S0021889809028064">orobengoa2009 — source</a> · <a href="https://doi.org/10.1107/S0021889809028064">DOI 10.1107/S0021889809028064</a> · PDF page 4 (reviewed local copy) · PDF page 5 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> For a fixed parent, cell, subgroup and complete set of allowed modes, the mode amplitudes are alternative coordinates for the same allowed displacements. Specify normalization and orthogonalization; imposing additional symmetry or fixing modes restricts the model.</p>
-<h3 id="c12" class="anchored">C12</h3>
-<p><strong>Primary-mode hierarchy and sparse priors</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> One or two primary modes dominate; such prior knowledge cannot be written in atomic coordinates.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:42</a>; <a href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:27</a></p>
-<p><strong>Evidence and assessment:</strong> Perez-Mato et al.&nbsp;§4 explains energetic hierarchies, induced secondary modes and coupling-dependent amplitudes. This supports using a hierarchical prior in suitable displacive systems. It is not a universal one-or-two-mode theorem. An invertible basis change permits the same prior to be expressed in atomic coordinates, though less simply.</p>
-<ul>
-<li>Printed pp.&nbsp;564–565, §4, especially Eq. (9) (full-text passage). <a href="https://journals.iucr.org/paper?S0108767310016247">perezmato2010 — source</a> · <a href="https://doi.org/10.1107/S0108767310016247">DOI 10.1107/S0108767310016247</a> · PDF page 7 (reviewed local copy) · PDF page 8 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> For many pseudosymmetric displacive structures, a small subset of distortions dominates. Mode coordinates can make a physically motivated hierarchical prior easier to express and apply; the equivalent prior can also be transformed into atomic coordinates.</p>
-<h3 id="c13" class="anchored">C13</h3>
-<p><strong>Symmetry modes do not necessarily diagonalize the data sensitivity</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> Switching to symmetry modes turns ambiguous correlated coordinates into well-determined single amplitudes and aligns the Jacobian near-null space.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:43</a>; <a href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:27</a></p>
-<p><strong>Evidence and assessment:</strong> The papers support useful physical organization and sometimes reduced correlations. They do not establish that symmetry modes are the singular vectors of a particular instrument-weighted diffraction Jacobian. Perez-Mato’s discussion of privileged eigenmodes concerns the energy Hessian, not the measurement Fisher matrix.</p>
-<ul>
-<li>Printed pp.&nbsp;564–565, energy eigenmodes (full-text passage). <a href="https://journals.iucr.org/paper?S0108767310016247">perezmato2010 — source</a> · <a href="https://doi.org/10.1107/S0108767310016247">DOI 10.1107/S0108767310016247</a> · PDF page 7 (reviewed local copy) · PDF page 8 (reviewed local copy)</li>
-<li>Printed 010901-4, parameterization dependence (full-text passage). <a href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">transtrum2015 — source</a> · <a href="https://doi.org/10.1063/1.4923066">DOI 10.1063/1.4923066</a> · PDF page 5 (reviewed local copy)</li>
-</ul>
-<p><strong>Independent reasoning:</strong> If <span class="math inline">u=Ba</span> with B invertible, <span class="math inline">J_a=J_uB</span> and <span class="math inline">\operatorname{rank}(J_a)=\operatorname{rank}(J_u)</span>. If B is orthogonal, J_a and J_u have the same singular values. Symmetry alone does not force B to diagonalize <span class="math inline">J_u^{\mathsf T}J_u</span>.</p>
-<p><strong>Proposed wording or action:</strong> Test how well the symmetry basis aligns with sensitive and insensitive directions for the chosen experiment. A complete invertible reparameterization preserves exact identifiability; improvement in inference requires additional constraints, priors, data, or a numerical benefit.</p>
-<h3 id="c14" class="anchored">C14</h3>
-<p><strong>Amplitude magnitude is not uncertainty</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> Large amplitudes are determined and small amplitudes are undetermined.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:44</a>; <a href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:27</a></p>
-<p><strong>Evidence and assessment:</strong> The mode papers rank the contribution of distortions to structure and stability. They do not equate amplitude size with statistical precision. That requires uncertainty or sensitivity analysis for the actual data.</p>
-<ul>
-<li>§4 amplitude hierarchy (full-text passage). <a href="https://journals.iucr.org/paper?S0108767310016247">perezmato2010 — source</a> · <a href="https://doi.org/10.1107/S0108767310016247">DOI 10.1107/S0108767310016247</a> · PDF page 7 (reviewed local copy) · PDF page 8 (reviewed local copy)</li>
-<li>Printed p.&nbsp;1873, Fig. 1 and sensitivity directions (full-text passage). <a href="https://dx.plos.org/10.1371/journal.pcbi.0030189">gutenkunst2007 — source</a> · <a href="https://doi.org/10.1371/journal.pcbi.0030189">DOI 10.1371/journal.pcbi.0030189</a> · PDF page 3 (reviewed local copy)</li>
-</ul>
-<p><strong>Independent reasoning:</strong> In <span class="math inline">d=A+\varepsilon</span> with known noise variance <span class="math inline">\sigma^2</span>, the local information about A is <span class="math inline">1/\sigma^2</span>, independent of whether A is zero, small, or large.</p>
-<p><strong>Proposed wording or action:</strong> Report mode amplitudes together with their uncertainties and correlations. Rank structural contribution and statistical identifiability separately.</p>
-<h3 id="c15" class="anchored">C15</h3>
-<p><strong>Sloppy sensitivity spectra</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> Sloppy models can have sensitivity eigenvalues spanning many orders of magnitude, with stiff and sloppy parameter combinations.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:124</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:22</a></p>
-<p><strong>Evidence and assessment:</strong> Gutenkunst et al.&nbsp;study 17 systems-biology models and show this pattern in Fig. 1. Transtrum et al.&nbsp;develop the geometric interpretation. These are appropriate references; they do not prove that every inverse problem or every small parameter is sloppy.</p>
-<ul>
-<li>Printed pp.&nbsp;1872–1873; Results and Fig. 1 (full-text passage). <a href="https://dx.plos.org/10.1371/journal.pcbi.0030189">gutenkunst2007 — source</a> · <a href="https://doi.org/10.1371/journal.pcbi.0030189">DOI 10.1371/journal.pcbi.0030189</a> · PDF page 2 (reviewed local copy) · PDF page 3 (reviewed local copy)</li>
-<li>Printed 010901-4, §III (full-text passage). <a href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">transtrum2015 — source</a> · <a href="https://doi.org/10.1063/1.4923066">DOI 10.1063/1.4923066</a> · PDF page 5 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Retain, with the model-family scope and a citation to Gutenkunst Fig. 1; use dimensionless parameter scales when comparing directions.</p>
-<h3 id="c16" class="anchored">C16</h3>
-<p><strong>A small singular value needs a parameter scale</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> An unscaled singular value much smaller than one is a practical non-identifiability.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:35</a>; <a href="../../programme/index.html">ecosystem/site/programme/index.qmd:17</a></p>
-<p><strong>Evidence and assessment:</strong> Transtrum et al.&nbsp;explicitly warn that Fisher eigenvalues change under parameter units and reparameterization. Noise whitening alone does not make differently dimensioned parameter directions comparable.</p>
-<ul>
-<li>Printed 010901-4, §III, unit-change example (full-text passage). <a href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">transtrum2015 — source</a> · <a href="https://doi.org/10.1063/1.4923066">DOI 10.1063/1.4923066</a> · PDF page 5 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Choose meaningful dimensionless parameter scales or a prior metric, then interpret J S and its sensitivity relative to a stated parameter range and noise model. Assess nonlinear/global behaviour separately.</p>
-<h3 id="c17" class="anchored">C17</h3>
-<p><strong>Local Jacobian rank is not a complete structural-identifiability test</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> Zero Jacobian singular values diagnose structural non-identifiability, and structural non-identifiability is always a positive-dimensional fibre.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:35</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:87</a></p>
-<p><strong>Evidence and assessment:</strong> The website conflates local first-order rank deficiency, continuous non-identifiability, and global discrete ambiguities. Raue’s abstract supports the general distinction but not these equivalences. Exact elementary counterexamples settle the issue.</p>
-<ul>
-<li>Abstract supports only the broader terminology (abstract only). <a href="https://pubmed.ncbi.nlm.nih.gov/19505944/">raue2009 — source</a> · <a href="https://doi.org/10.1093/bioinformatics/btp358">DOI 10.1093/bioinformatics/btp358</a></li>
-<li>Abstract gives multiple non-congruent homometric configurations (abstract only). <a href="https://journals.aps.org/pr/abstract/10.1103/PhysRev.65.195">patterson1944 — source</a> · <a href="https://doi.org/10.1103/PhysRev.65.195">DOI 10.1103/PhysRev.65.195</a></li>
-</ul>
-<p><strong>Independent reasoning:</strong> <span class="math inline">F(x)=x^3</span> is injective even though <span class="math inline">F'(0)=0</span>. <span class="math inline">F(x)=x^2</span> has two preimages for positive data but nonzero derivative at each preimage. Thus neither stated equivalence holds without qualifications.</p>
-<p><strong>Proposed wording or action:</strong> Distinguish global from local identifiability, continuous from discrete ambiguities, and first-order rank deficiency from a structural proof. Use the Jacobian as a local diagnostic with regularity assumptions.</p>
-<h3 id="c18" class="anchored">C18</h3>
-<p><strong>A likelihood region is not a posterior</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> The chi-square tube is a posterior distribution.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:77</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:32</a></p>
-<p><strong>Evidence and assessment:</strong> Tarantola Eq. (1.100) includes a prior multiplying a likelihood. The website’s tube is a thresholded residual set, with no probability density or prior weighting. It is not itself a posterior or automatically a credible region.</p>
-<ul>
-<li>Printed p.&nbsp;35, Eqs. (1.94) and (1.100) (full-text passage). <a href="https://epubs.siam.org/doi/book/10.1137/1.9780898717921">tarantola2005 — source</a> · <a href="https://doi.org/10.1137/1.9780898717921">DOI 10.1137/1.9780898717921</a> · PDF page 49 (reviewed local copy)</li>
-<li>Printed pp.&nbsp;152–153, Eqs. (19)–(23) (full-text passage). <a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019 — source</a> · <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">DOI 10.1016/j.jqsrt.2019.01.021</a> · PDF page 7 (reviewed local copy) · PDF page 8 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> The tube is a data-misfit acceptance region. A Bayesian posterior weights configurations using both likelihood and prior; a credible region is constructed from that normalized posterior.</p>
-<h3 id="c19" class="anchored">C19</h3>
-<p><strong>The model-manifold description</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> The image of the forward model in data space can be studied geometrically as a model manifold, often with a hierarchy of widths.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:133</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:33</a></p>
-<p><strong>Evidence and assessment:</strong> Transtrum et al.&nbsp;provide this formulation and discuss hyperribbons and manifold-boundary approximation. The model image can also have singularities or self-intersections, so “manifold” is a useful regular-model description rather than a universal smoothness guarantee.</p>
-<ul>
-<li>Printed 010901-2, -4 and -5; §§II–IV (full-text passage). <a href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">transtrum2015 — source</a> · <a href="https://doi.org/10.1063/1.4923066">DOI 10.1063/1.4923066</a> · PDF page 3 (reviewed local copy) · PDF page 5 (reviewed local copy) · PDF page 6 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Retain with a reference to §§II–IV; qualify the thin-ribbon picture as a common geometry of the studied sloppy models.</p>
-<h3 id="c20" class="anchored">C20</h3>
-<p><strong>Cranmer supports approximate amortized inference, not guaranteed recovery</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> A network returns the full posterior for any new measurement, including all disconnected branches, at guaranteed campaign-scale speed.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:144</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:68</a>; <a href="../../programme/index.html">ecosystem/site/programme/index.qmd:38</a></p>
-<p><strong>Evidence and assessment:</strong> Cranmer et al.&nbsp;describe amortized likelihood, likelihood-ratio and posterior surrogates. They also discuss finite-sample, capacity and optimization errors and calibration. The review does not guarantee complete branch recovery, arbitrary out-of-distribution accuracy, or the specific timing claim.</p>
-<ul>
-<li>Local arXiv version pp.&nbsp;7–8, §3B–D (full-text passage). <a href="https://pnas.org/doi/full/10.1073/pnas.1912789117">cranmer2020 — source</a> · <a href="https://doi.org/10.1073/pnas.1912789117">DOI 10.1073/pnas.1912789117</a> · PDF page 7 (reviewed local copy) · PDF page 8 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Simulation-based inference can learn an approximate posterior or likelihood surrogate over a specified simulation domain. Validate calibration, branch coverage, robustness to model mismatch, and computational cost on the intended experiment.</p>
-<h3 id="c21" class="anchored">C21</h3>
-<p><strong>Park dataset and accuracy figures</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> Park uses about 150,000 simulated patterns and reports approximately 95%, 84% and 81% accuracy for crystal system, extinction group and space group.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:153</a>; <a href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:31</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:61</a></p>
-<p><strong>Evidence and assessment:</strong> The dataset size and ordering of percentages are correct. The exact values are 94.99%, 83.83% and 81.14%, evaluated on a randomly selected 20% test split of the simulated dataset. These are benchmark results, not information-theoretic limits of powder diffraction.</p>
-<ul>
-<li>Printed pp.&nbsp;486, 488 and 490; abstract, §2 and test evaluation (full-text passage). <a href="https://journals.iucr.org/paper?S205225251700714X">park2017 — source</a> · <a href="https://doi.org/10.1107/S205225251700714X">DOI 10.1107/S205225251700714X</a> · PDF page 1 (reviewed local copy) · PDF page 3 (reviewed local copy) · PDF page 5 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Retain the numbers; say “test accuracies on their simulated-data benchmark” and avoid interpreting the percentages as universal experimental identifiability.</p>
-<h3 id="c22" class="anchored">C22</h3>
-<p><strong>Lee dataset size and chemical scope</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> Lee uses about 1.8 million synthetic mixture patterns from 170 compounds.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:162</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:61</a>; <a href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:31</a></p>
-<p><strong>Evidence and assessment:</strong> The article gives 1,785,405 patterns and 170 compounds. The chemical scope is the Sr–Li–Al–O quaternary pool. The paper supports the dataset claim, but not an unrestricted capability across all inorganic materials.</p>
-<ul>
-<li>Article pp.&nbsp;1–2, abstract and Results (full-text passage). <a href="https://www.nature.com/articles/s41467-019-13749-3">lee2020 — source</a> · <a href="https://doi.org/10.1038/s41467-019-13749-3">DOI 10.1038/s41467-019-13749-3</a> · PDF page 1 (reviewed local copy) · PDF page 2 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Use the exact number when useful and specify the Sr–Li–Al–O reference set.</p>
-<h3 id="c23" class="anchored">C23</h3>
-<p><strong>Szymanski probabilities are phase-classification confidence</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> Szymanski returns distributions instead of labels, providing the required form of output for an underdetermined inverse problem.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:171</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:61</a></p>
-<p><strong>Evidence and assessment:</strong> The paper uses 1,000 stochastic dropout predictions and defines a phase’s probability as its fraction of predicted labels. It ranks phases and uses a branching procedure to select a mixture. These are phase-classification confidence scores, not a posterior over continuous atomic or mode parameters, and the final result still identifies phases.</p>
-<ul>
-<li>Publisher-typeset early-access PDF pp.&nbsp;3–4 (C–D), CNN and branching sections (full-text passage). <a href="https://pubs.acs.org/doi/10.1021/acs.chemmater.1c01071">szymanski2021 — source</a> · <a href="https://doi.org/10.1021/acs.chemmater.1c01071">DOI 10.1021/acs.chemmater.1c01071</a> · PDF page 3 (reviewed local copy) · PDF page 4 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Szymanski combines physics-based augmentation with dropout-based phase confidence and a branching mixture-identification algorithm. Cite it as a related classification workflow, not as evidence of posterior inference over the refinement configuration space.</p>
-<h3 id="c24" class="anchored">C24</h3>
-<p><strong>The three ML papers are precedents, not the proposed mode-refinement pipeline</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> The three papers establish the proposed scripted-expertise pipeline and show that the wider field does not yet perform mode-space corpus refinement.</p>
-<p><strong>Website locations:</strong> <a href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:31</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:61</a></p>
-<p><strong>Evidence and assessment:</strong> They demonstrate synthetic-data classification and phase identification, not posterior mapping of symmetry-mode refinements. Their contents support a narrow comparison with the proposed work. Reviewing these three papers cannot establish priority, absence of competing work, or a ranking of the field’s best results.</p>
-<ul>
-<li>§§2–4 (full-text passage). <a href="https://journals.iucr.org/paper?S205225251700714X">park2017 — source</a> · <a href="https://doi.org/10.1107/S205225251700714X">DOI 10.1107/S205225251700714X</a> · PDF page 3 (reviewed local copy) · PDF page 5 (reviewed local copy)</li>
-<li>Abstract and Results (full-text passage). <a href="https://www.nature.com/articles/s41467-019-13749-3">lee2020 — source</a> · <a href="https://doi.org/10.1038/s41467-019-13749-3">DOI 10.1038/s41467-019-13749-3</a> · PDF page 1 (reviewed local copy) · PDF page 2 (reviewed local copy)</li>
-<li>CNN and branching workflow (full-text passage). <a href="https://pubs.acs.org/doi/10.1021/acs.chemmater.1c01071">szymanski2021 — source</a> · <a href="https://doi.org/10.1021/acs.chemmater.1c01071">DOI 10.1021/acs.chemmater.1c01071</a> · PDF page 3 (reviewed local copy) · PDF page 4 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> These three examples show how physical modelling enters synthetic training data. The proposed mode-refinement corpus has a different target; its novelty requires a separate literature search.</p>
-<h3 id="c25" class="anchored">C25</h3>
-<p><strong>Kuzmenko’s background model and dense variational mesh</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> Kuzmenko’s variational dielectric function is anchored by a few oscillators.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:182</a>; <a href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:25</a></p>
-<p><strong>Evidence and assessment:</strong> The central method independently adjusts the imaginary dielectric function on a dense anchor-frequency mesh and couples the real part by KK. The number of variational degrees of freedom can be comparable to the number of data points. A limited-parameter background model supplies extrapolation behaviour in a separate first fitting step. The phrase could refer to that background model, but it is ambiguous without this distinction; it should not stand alone as a description of the variational representation.</p>
-<ul>
-<li>Printed 083108-1, -3 and -4; abstract and §IV, Eqs. (14) and (17) (full-text passage). <a href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of">kuzmenko2005 — source</a> · <a href="https://doi.org/10.1063/1.1979470">DOI 10.1063/1.1979470</a> · PDF page 3 (reviewed local copy) · PDF page 5 (reviewed local copy) · PDF page 6 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Kuzmenko represents the dielectric function on a dense frequency mesh constrained by KK, with a background model for out-of-range spectral weight. Do not conflate this mesh with a small set of physical oscillators.</p>
-<h3 id="c26" class="anchored">C26</h3>
-<p><strong>Phase recovery needs analytic and geometry conditions</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> Causality alone fixes reflection phase from its modulus over the whole frequency axis.</p>
-<p><strong>Website locations:</strong> <a href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:25</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:52</a></p>
-<p><strong>Evidence and assessment:</strong> Kuzmenko explicitly states the extra condition that r has no zeros in the upper complex-frequency half-plane for the logarithmic reflectivity relation. He notes failures for sufficiently oblique incidence and thin films. The standard relation couples phase to log modulus, not directly to modulus.</p>
-<ul>
-<li>Printed 083108-1, Eqs. (3)–(4) and adjacent caveat (full-text passage). <a href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of">kuzmenko2005 — source</a> · <a href="https://doi.org/10.1063/1.1979470">DOI 10.1063/1.1979470</a> · PDF page 3 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> For geometries satisfying the analytic conditions for log r, such as the standard semi-infinite normal-incidence case, KK relates reflection phase to log modulus, with extrapolation assumptions outside the measured range.</p>
-<h3 id="c27" class="anchored">C27</h3>
-<p><strong>Unmeasured spectral weight is not generically invisible</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> Everything outside the measured frequency range lies in the null space.</p>
-<p><strong>Website locations:</strong> <a href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:19</a></p>
-<p><strong>Evidence and assessment:</strong> Kuzmenko §IV.D explicitly explains that high- and low-frequency spectral weight contributes to the real dielectric function inside the measured band. Extrapolation uncertainty is real, but it is not an arbitrary exact null space of all out-of-band changes.</p>
-<ul>
-<li>Printed 083108-4, §IV.D (full-text passage). <a href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of">kuzmenko2005 — source</a> · <a href="https://doi.org/10.1063/1.1979470">DOI 10.1063/1.1979470</a> · PDF page 6 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Out-of-band spectral weight can affect in-band optical response through KK coupling. Finite-band data may constrain it weakly and ambiguously, so extrapolation assumptions and additional measurements remain important.</p>
-<h3 id="c28" class="anchored">C28</h3>
-<p><strong>Oscillator non-identifiability is not universal</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> A finite oscillator decomposition is necessarily non-unique even if the dielectric function is known.</p>
-<p><strong>Website locations:</strong> <a href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:19</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:52</a></p>
-<p><strong>Evidence and assessment:</strong> Kuzmenko’s flexible variational representation is not a theorem that every fixed finite Lorentz model is structurally non-identifiable. Overlap, finite bandwidth, unknown model order and noise can make fits weakly determined. Exact degeneracies require separate conditions.</p>
-<ul>
-<li>Printed 083108-3–4, variational representation (full-text passage). <a href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of">kuzmenko2005 — source</a> · <a href="https://doi.org/10.1063/1.1979470">DOI 10.1063/1.1979470</a> · PDF page 5 (reviewed local copy) · PDF page 6 (reviewed local copy)</li>
-</ul>
-<p><strong>Independent reasoning:</strong> A rational response with fixed distinct simple poles has a unique partial-fraction representation up to ordering. Coincident poles can instead make individual strengths degenerate. These are different cases.</p>
-<p><strong>Proposed wording or action:</strong> Different oscillator models may fit finite-band noisy data comparably well. Assess identifiability for the specified model order and parameterization; do not assert universal exact non-uniqueness.</p>
-<h3 id="c29" class="anchored">C29</h3>
-<p><strong>difes software claims and optical assumptions</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> difes implements additive/multiplicative dielectric terms, Fresnel optics, finite-range KK corrections and textual recipes.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:190</a>; <a href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:15</a>; <a href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:28</a></p>
-<p><strong>Evidence and assessment:</strong> Read-only inspection at commit 55e78ff908519322dbf37af22efb0fc8a0223a15 confirms the documented model convention, normal-incidence bulk and slab routines, KK correction routines, and recipe syntax. This confirms implementation/documentation, not numerical accuracy or physical adequacy for every sample.</p>
-<ul>
-<li>README conventions/recipes; optics.py:48–74; kk.py:1–21; recipe example (versioned software source). <a href="https://github.com/jmigartua/difes">difes2026 — source</a></li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Retain the software citation with a commit and relevant modules. State the normal-incidence, sample-geometry and opacity assumptions next to the simple Fresnel/emissivity equations.</p>
-<h3 id="c30" class="anchored">C30</h3>
-<p><strong>A missing primary source for finite-range correction</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> Kuzmenko 2005 is the nearby citation for difes finite-range corrections.</p>
-<p><strong>Website locations:</strong> <a href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:25</a></p>
-<p><strong>Evidence and assessment:</strong> The inspected difes kk.py explicitly attributes its correction method to De Sousa Meneses et al.&nbsp;2007. The primary paper Retrieval of linear optical functions from finite range spectra has DOI 10.1366/000370207783292163, independently identified in PubMed. Kuzmenko’s variational approach and this CFRC method should be distinguished.</p>
-<ul>
-<li>kk.py module documentation (versioned software source). <a href="https://github.com/jmigartua/difes">difes2026 — source</a></li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Cite De Sousa Meneses, Rousseau, Echegut and Simon (2007), Applied Spectroscopy 61, 1390–1397, DOI 10.1366/000370207783292163, for CFRC; retain Kuzmenko for KK-constrained variational fitting. Full method details in the new paper still require full-text review.</p>
-<h3 id="c31" class="anchored">C31</h3>
-<p><strong>The thesis cannot yet support a detailed technical claim</strong></p>
-<p><strong>Verdict:</strong> Not fully verified.</p>
-<p><strong>Website claim:</strong> The thesis supports the high-temperature emissivity and dielectric-modelling context.</p>
-<p><strong>Website locations:</strong> <a href="../index.html">ecosystem/data/sources.yml:199</a></p>
-<p><strong>Evidence and assessment:</strong> Its bibliographic identity and topic were previously established, but no thesis full text is in the collection. This audit cannot assign chapter/page evidence or validate a particular result from it.</p>
-<ul>
-<li>No local full text (bibliographic context only). <a href="https://hdl.handle.net/10810/50263">gonzalezdearrieta2020 — source</a></li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Use it as bibliographic context only until the relevant thesis chapters are available. Do not mark its substantive results verified.</p>
-<h3 id="c32" class="anchored">C32</h3>
-<p><strong>Daun experimental conditions and tabulated parameters</strong></p>
-<p><strong>Verdict:</strong> Supported within stated scope.</p>
-<p><strong>Website claim:</strong> The particle size, adopted temperature, spectral ranges and listed Drude estimates summarize Daun’s experiment.</p>
-<p><strong>Website locations:</strong> <a href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:15</a>; <a href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:22</a></p>
-<p><strong>Evidence and assessment:</strong> The article supports 38.3 nm mean diameter, 5.7 nm standard deviation, an adopted 1550 <span class="math inline">\pm</span> 35 K from earlier silicon work, and the two wavelength ranges. The table reproduces the five parameter pairs correctly. Table 3 concerns fits/comparisons for the LDLS spectrum.</p>
-<ul>
-<li>Printed pp.&nbsp;147, 152–153; §2, Fig. 7, Table 3 (full-text passage). <a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019 — source</a> · <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">DOI 10.1016/j.jqsrt.2019.01.021</a> · PDF page 2 (reviewed local copy) · PDF page 7 (reviewed local copy) · PDF page 8 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Retain the values; label Table 3 as the LDLS comparison and keep the temperature’s adopted, rather than directly measured, status explicit.</p>
-<h3 id="c33" class="anchored">C33</h3>
-<p><strong>Daun surface scattering explanation is reversed</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> Daun offers surface-electron scattering at about 40 nm as an explanation of the discrepancy.</p>
-<p><strong>Website locations:</strong> <a href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:35</a></p>
-<p><strong>Evidence and assessment:</strong> On p.&nbsp;154 the authors estimate an electron mean free path of 0.54 nm, far below the roughly 40 nm particle size, and discount this explanation for their case. They favour inadequacy of the simplistic free-electron model and discuss a reduced effective conduction-electron density.</p>
-<ul>
-<li>Printed p.&nbsp;154, §5, right column (full-text passage). <a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019 — source</a> · <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">DOI 10.1016/j.jqsrt.2019.01.021</a> · PDF page 9 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Daun et al.&nbsp;consider surface scattering but judge it too small to explain their discrepancy; they instead discuss limitations of the free-electron description, including fewer effective conduction electrons.</p>
-<h3 id="c34" class="anchored">C34</h3>
-<p><strong>The LDLS sees the shoulder, not the 190 nm peak</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> The 205–585 nm measurement reaches the resonance peak near 190 nm.</p>
-<p><strong>Website locations:</strong> <a href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:30</a></p>
-<p><strong>Evidence and assessment:</strong> The stated lower wavelength is 205 nm. The paper says the LDLS captures more spectral variation associated with a resonance whose peak is near 190 nm; the peak itself is outside the quoted measurement interval. Improved signal-to-noise also contributes to the narrower posterior.</p>
-<ul>
-<li>Printed pp.&nbsp;151–152 and 154; discussion of Fig. 7 and Fig. 9 (full-text passage). <a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019 — source</a> · <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">DOI 10.1016/j.jqsrt.2019.01.021</a> · PDF page 6 (reviewed local copy) · PDF page 7 (reviewed local copy) · PDF page 9 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> The LDLS captures more of the resonance shoulder and has higher signal-to-noise; the peak near 190 nm is outside its stated 205–585 nm range.</p>
-<h3 id="c35" class="anchored">C35</h3>
-<p><strong>Daun approximation-error sampling is not the stated prior range</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> The approximation-error samples span the same prior range as the inference.</p>
-<p><strong>Website locations:</strong> <a href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:19</a></p>
-<p><strong>Evidence and assessment:</strong> The printed p.&nbsp;152 sampling intervals differ from the p.&nbsp;153 prior intervals, including the powers of ten. The published text may contain a typographical problem, but the website silently equates them. The error term is fitted from 1,000 samples; the posterior uses <span class="math inline">10^{6}</span> MCMC samples. Specifically, p.&nbsp;152 prints <span class="math inline">\omega_p</span> in [<span class="math inline">1.5\times10^{15}</span>, <span class="math inline">3\times10^{15}</span>] <span class="math inline">\mathrm{s}^{-1}</span> and <span class="math inline">\tau</span> in [<span class="math inline">1.5\times10^{-15}</span>, <span class="math inline">3\times10^{-15}</span>] s, whereas Eq. (22) prints [<span class="math inline">1.5\times10^{16}</span>, <span class="math inline">4.5\times10^{16}</span>] rad/s and [<span class="math inline">1.5\times10^{-16}</span>, <span class="math inline">4.5\times10^{-16}</span>] s. These are transcribed discrepancies, not corrected inputs for a replication.</p>
-<ul>
-<li>Printed pp.&nbsp;152–153, text after Eq. (18) and Eq. (22) (full-text passage). <a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019 — source</a> · <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">DOI 10.1016/j.jqsrt.2019.01.021</a> · PDF page 7 (reviewed local copy) · PDF page 8 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Describe the sampling construction without claiming the two ranges match. Before reproducing the calculation, resolve the paper’s inconsistent printed intervals using supplementary material or author clarification.</p>
-<h3 id="c36" class="anchored">C36</h3>
-<p><strong>Low-frequency Drude degeneracy is a limiting approximation</strong></p>
-<p><strong>Verdict:</strong> Needs qualification or a better citation.</p>
-<p><strong>Website claim:</strong> At low frequency only <span class="math inline">\omega_p^2\tau</span> enters the measured spectrum, creating exact non-identifiability of the full model.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:20</a>; <a href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:36</a></p>
-<p><strong>Evidence and assessment:</strong> Daun Eq. (4) retains separate parameter dependence at finite frequency. The product controls DC conductivity and the leading dissipative low-frequency term. Treating a finite-band full Drude/Mie measurement as exactly product-only requires an explicit reduced forward model and limit.</p>
-<ul>
-<li>Printed p.&nbsp;149, Eqs. (4)–(5) (full-text passage). <a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019 — source</a> · <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">DOI 10.1016/j.jqsrt.2019.01.021</a> · PDF page 4 (reviewed local copy)</li>
-</ul>
-<p><strong>Independent reasoning:</strong> For <span class="math inline">\omega\tau\ll 1</span>, <span class="math inline">\varepsilon_I=1-\omega_p^2\tau^2+O(\omega^2)</span> while <span class="math inline">\varepsilon_{II}=\omega_p^2\tau/\omega+O(\omega)</span>. The subleading information can be small, but the full expression is not solely a function of the product.</p>
-<p><strong>Proposed wording or action:</strong> In a reduced DC/leading-order model the data may depend only on <span class="math inline">\omega_p^2\tau</span>. In the full finite-frequency optical model, assess whether the separate sensitivities are merely too weak to resolve.</p>
-<h3 id="c37" class="anchored">C37</h3>
-<p><strong>A surrogate does not automatically remove model error</strong></p>
-<p><strong>Verdict:</strong> Proposal presented too strongly.</p>
-<p><strong>Website claim:</strong> A learned Mie surrogate eliminates the approximation-error term and makes MCMC run on exact theory.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:70</a>; <a href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:40</a>; <a href="../../programme/index.html">ecosystem/site/programme/index.qmd:52</a></p>
-<p><strong>Evidence and assessment:</strong> Daun supplies the motivation for a cheaper forward calculation, not a trained or validated surrogate. A learned emulator has its own approximation error. Even exact Mie calculations do not repair an inadequate dielectric model.</p>
-<ul>
-<li>Printed pp.&nbsp;151–152 and 154 (full-text passage). <a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019 — source</a> · <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">DOI 10.1016/j.jqsrt.2019.01.021</a> · PDF page 6 (reviewed local copy) · PDF page 7 (reviewed local copy) · PDF page 9 (reviewed local copy)</li>
-<li>Surrogate inference and calibration discussion (full-text passage). <a href="https://pnas.org/doi/full/10.1073/pnas.1912789117">cranmer2020 — source</a> · <a href="https://doi.org/10.1073/pnas.1912789117">DOI 10.1073/pnas.1912789117</a> · PDF page 7 (reviewed local copy) · PDF page 8 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Test a surrogate against exact Mie over the inference domain. Propagate or bound its error relative to measurement noise; separately assess Drude model discrepancy. Treat runtime and posterior agreement as measured outcomes.</p>
-<h3 id="c38" class="anchored">C38</h3>
-<p><strong>Expected information gain is not determined by a Jacobian alone</strong></p>
-<p><strong>Verdict:</strong> Proposal presented too strongly.</p>
-<p><strong>Website claim:</strong> The Jacobian alone computes expected information gain and would have selected the UV source in advance.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:72</a>; <a href="../../programme/index.html">ecosystem/site/programme/index.qmd:52</a></p>
-<p><strong>Evidence and assessment:</strong> The cited Daun paper compares actual sources; it does not perform the proposed design calculation. A Jacobian can enter a local linear-Gaussian approximation, but global Bayesian expected information gain also requires a prior/current posterior, a noise model, a candidate likelihood and averaging over possible data.</p>
-<ul>
-<li>Printed p.&nbsp;154; source comparison (full-text passage). <a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019 — source</a> · <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">DOI 10.1016/j.jqsrt.2019.01.021</a> · PDF page 9 (reviewed local copy)</li>
-<li>Prior and likelihood roles in posterior (full-text passage). <a href="https://epubs.siam.org/doi/book/10.1137/1.9780898717921">tarantola2005 — source</a> · <a href="https://doi.org/10.1137/1.9780898717921">DOI 10.1137/1.9780898717921</a> · PDF page 49 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Start with a clearly labelled local Fisher-information design approximation, then test it against posterior-based expected information gain and simulated source choices. Do not prestate the ranking as a demonstrated result.</p>
-<h3 id="c39" class="anchored">C39</h3>
-<p><strong>The P1 diagnostic cannot identify all three failure types alone</strong></p>
-<p><strong>Verdict:</strong> Proposal presented too strongly.</p>
-<p><strong>Website claim:</strong> A Jacobian SVD and a two-parameter region show at a glance whether the problem has structural non-identifiability, practical non-identifiability or model inadequacy.</p>
-<p><strong>Website locations:</strong> <a href="../../programme/index.html">ecosystem/site/programme/index.qmd:18</a></p>
-<p><strong>Evidence and assessment:</strong> The local Jacobian diagnoses first-order sensitivity under the assumed model. It neither proves global uniqueness nor checks whether the assumed forward model describes reality. No cited source establishes the promised three-way diagnosis.</p>
-<ul>
-<li>Profile-likelihood motivation (abstract only). <a href="https://pubmed.ncbi.nlm.nih.gov/19505944/">raue2009 — source</a> · <a href="https://doi.org/10.1093/bioinformatics/btp358">DOI 10.1093/bioinformatics/btp358</a></li>
-<li>Model discrepancy and confounding (full-text passage). <a href="https://iopscience.iop.org/article/10.1088/0266-5611/30/11/114007">brynjarsdottir2014 — source</a> · <a href="https://doi.org/10.1088/0266-5611/30/11/114007">DOI 10.1088/0266-5611/30/11/114007</a> · PDF page 1 (reviewed local copy) · PDF page 3 (reviewed local copy)</li>
-<li>Local sensitivity and parameterization caveats (full-text passage). <a href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">transtrum2015 — source</a> · <a href="https://doi.org/10.1063/1.4923066">DOI 10.1063/1.4923066</a> · PDF page 5 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Use scaled SVD as one diagnostic, alongside nonlinear profile/posterior exploration, global ambiguity checks, residual analysis, and model/predictive validation. Present P1 as a proposed suite, not a sufficient classification rule.</p>
-<h3 id="c40" class="anchored">C40</h3>
-<p><strong>Data availability and reproducibility claims</strong></p>
-<p><strong>Verdict:</strong> Not fully verified.</p>
-<p><strong>Website claim:</strong> Daun’s underlying data are not public.</p>
-<p><strong>Website locations:</strong> <a href="../../programme/index.html">ecosystem/site/programme/index.qmd:52</a></p>
-<p><strong>Evidence and assessment:</strong> The article lists supplementary material on p.&nbsp;155. The collection contains the main paper, but this audit has not established what all supplements or repositories contain. Failure to have downloaded data is not evidence that they are unavailable publicly.</p>
-<ul>
-<li>Printed p.&nbsp;155, Supplementary material note (full-text passage). <a href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">daun2019 — source</a> · <a href="https://doi.org/10.1016/j.jqsrt.2019.01.021">DOI 10.1016/j.jqsrt.2019.01.021</a> · PDF page 10 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> The original measurement data have not yet been obtained for this project. Check the supplementary files and data repositories before claiming that the data are not public.</p>
-<h3 id="c41" class="anchored">C41</h3>
-<p><strong>A covariance diagonal is not a conditional tube cross-section</strong></p>
-<p><strong>Verdict:</strong> Incorrect as written.</p>
-<p><strong>Website claim:</strong> Diagonal covariance uncertainties describe transverse width but exclude the long sloppy directions.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:22</a>; <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:22</a></p>
-<p><strong>Evidence and assessment:</strong> In the local Gaussian approximation, diagonal covariance entries are marginal variances along parameter axes and can already be large because of sloppy directions. Reading only the diagonal loses orientation and dependence, not all contribution from long directions. Nonlinearity can invalidate the approximation.</p>
-<ul>
-<li>Fig. 1 distinguishes projections from intersections (full-text passage). <a href="https://dx.plos.org/10.1371/journal.pcbi.0030189">gutenkunst2007 — source</a> · <a href="https://doi.org/10.1371/journal.pcbi.0030189">DOI 10.1371/journal.pcbi.0030189</a> · PDF page 3 (reviewed local copy)</li>
-</ul>
-<p><strong>Independent reasoning:</strong> For <span class="math inline">H=J^{\mathsf T}J=V\operatorname{diag}(\sigma_k^2)V^{\mathsf T}</span>, <span class="math inline">\operatorname{Cov}_{ii}=\sum_k V_{ik}^2/\sigma_k^2</span>. Small <span class="math inline">\sigma_k</span> explicitly contribute to diagonal marginal variances.</p>
-<p><strong>Proposed wording or action:</strong> Report covariance eigenvectors and correlations as well as marginal standard errors; use nonlinear exploration where the local ellipsoid is inadequate.</p>
-<h3 id="c42" class="anchored">C42</h3>
-<p><strong>Transferability and parameter-point dependence</strong></p>
-<p><strong>Verdict:</strong> Proposal presented too strongly.</p>
-<p><strong>Website claim:</strong> Identifiability learned from synthetic data transfers by construction and is independent of the sample.</p>
-<p><strong>Website locations:</strong> <a href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:78</a>; <a href="../../programme/index.html">ecosystem/site/programme/index.qmd:38</a></p>
-<p><strong>Evidence and assessment:</strong> The website itself defines J at a parameter point. Nonlinear sensitivities and identifiable combinations can vary with parameters, nuisance effects, noise and model mismatch. The three cited classification studies show performance in specified tests, not universal transfer.</p>
-<ul>
-<li>Inference reliability and calibration (full-text passage). <a href="https://pnas.org/doi/full/10.1073/pnas.1912789117">cranmer2020 — source</a> · <a href="https://doi.org/10.1073/pnas.1912789117">DOI 10.1073/pnas.1912789117</a> · PDF page 8 (reviewed local copy)</li>
-<li>Parameterized model geometry (full-text passage). <a href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">transtrum2015 — source</a> · <a href="https://doi.org/10.1063/1.4923066">DOI 10.1063/1.4923066</a> · PDF page 3 (reviewed local copy) · PDF page 5 (reviewed local copy)</li>
-</ul>
-<p><strong>Proposed wording or action:</strong> Learn identifiability over a stated parameter and instrument domain, then test transfer on held-out regimes and real measurements. Retain parameter-point and model-mismatch dependence.</p>
+<div class="claims" data-toc="no">
+<section class="claim v-warn" id="c01">
+<div class="claim-head"><span class="cid">C01</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">Hadamard and the modern definition</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Hadamard 1902 supplies existence, uniqueness and continuous dependence; an underdetermined inverse problem fails the second and third.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:70</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The original scan opens on printed p. 49 by explaining bien posé in terms of possibility and determinacy. It is an appropriate historical reference, but the modern three-part formulation needs a precise modern source. Non-uniqueness alone does not establish a separate instability result for a chosen regularized solution.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 49–50; opening definition and Cauchy/Dirichlet discussion</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#hadamard1902" title="hadamard1902 in the Sources table">hadamard1902</a><a class="ev-ext" href="https://illposed.net/hadamard.pdf">record</a></span><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 1, 2</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Hadamard provides a historical discussion of well-posedness. In the modern formulation, existence, uniqueness and continuous dependence are separate requirements; non-uniqueness violates uniqueness. Add a modern definition with its spaces and topology.</p></div>
+</section>
+<section class="claim v-ok" id="c02">
+<div class="claim-head"><span class="cid">C02</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">Probabilistic inverse problems</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Tarantola represents the inverse solution as a probability distribution over models.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:79</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The preface explicitly describes the update from prior to posterior, and §1.5 gives posterior density proportional to prior density times likelihood. This supports the stated use.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Preface p. xi; §1.5 p. 35, Eqs. (1.94)–(1.100)</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#tarantola2005" title="tarantola2005 in the Sources table">tarantola2005</a><a class="ev-ext" href="https://epubs.siam.org/doi/book/10.1137/1.9780898717921">record</a></span><a class="chip-doi" href="https://doi.org/10.1137/1.9780898717921">doi 10.1137/1.9780898717921</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 13, 49</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Retain; cite the preface, p. xi, and §1.5, p. 35, Eqs. (1.94)–(1.100).</p></div>
+</section>
+<section class="claim v-open" id="c03">
+<div class="claim-head"><span class="cid">C03</span><span class="verdict v-open">Not fully verified</span></div>
+<h3 class="anchored">Kaipio and Somersalo and approximation error</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Kaipio and Somersalo supply the mean-and-covariance approximation-error method used by Daun.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:88</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Daun p. 152 explicitly attributes the Gaussian approximation-error construction to reference [40]. This verifies Daun’s use and attribution. The Kaipio–Somersalo book itself is unavailable locally, so its exact chapter and formulation have not been independently checked.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Full book unavailable</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#kaipio2005" title="kaipio2005 in the Sources table">kaipio2005</a><a class="ev-ext" href="https://link.springer.com/10.1007/b138659">record</a></span><a class="chip-doi" href="https://doi.org/10.1007/b138659">doi 10.1007/b138659</a><span class="ev-kind k-bad" title="indirect attribution only">indirect</span></span></li><li class="ev"><span class="ev-loc">Printed p. 152, discussion of Eq. (18)</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#daun2019" title="daun2019 in the Sources table">daun2019</a><a class="ev-ext" href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">record</a></span><a class="chip-doi" href="https://doi.org/10.1016/j.jqsrt.2019.01.021">doi 10.1016/j.jqsrt.2019.01.021</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 7</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Daun et al., p. 152, Eq. (18), use an approximation-error distribution following Kaipio and Somersalo. Retain the book as a secondary attribution until its relevant pages are obtained.</p></div>
+</section>
+<section class="claim v-warn" id="c04">
+<div class="claim-head"><span class="cid">C04</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">Kennedy and O’Hagan and physical parameter meaning</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>The parameters lose their physical meaning when discrepancy is omitted.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:96</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The publisher summary supports Bayesian calibration with model discrepancy and parameter uncertainty. It does not establish the unconditional statement that all calibrated parameters lose physical meaning. Brynjarsdóttir and O’Hagan directly examine bias and confounding and are the more precise source for that warning.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Publisher summary</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#kennedy2001" title="kennedy2001 in the Sources table">kennedy2001</a><a class="ev-ext" href="https://academic.oup.com/jrsssb/article/63/3/425/7083367">record</a></span><a class="chip-doi" href="https://doi.org/10.1111/1467-9868.00294">doi 10.1111/1467-9868.00294</a><span class="ev-kind k-warn" title="abstract only">abstract only</span></span></li><li class="ev"><span class="ev-loc">Author manuscript abstract and p. 3 principal findings</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#brynjarsdottir2014" title="brynjarsdottir2014 in the Sources table">brynjarsdottir2014</a><a class="ev-ext" href="https://iopscience.iop.org/article/10.1088/0266-5611/30/11/114007">record</a></span><a class="chip-doi" href="https://doi.org/10.1088/0266-5611/30/11/114007">doi 10.1088/0266-5611/30/11/114007</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 1, 3</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Ignoring a nonzero model discrepancy can bias estimates of physical parameters. Adding a discrepancy term does not by itself identify those parameters; informative assumptions about discrepancy may be needed.</p></div>
+</section>
+<section class="claim v-ok" id="c05">
+<div class="claim-head"><span class="cid">C05</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">Bias and overconfidence from ignored discrepancy</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Ignoring model discrepancy can produce biased and overconfident parameter inference.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:105</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:24</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The manuscript abstract and principal findings support this claim, and also warn that a flexible discrepancy function is confounded with calibration parameters. The website’s main warning is sound when stated conditionally.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Manuscript pp. 1 and 3; §2 gives the observation model</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#brynjarsdottir2014" title="brynjarsdottir2014 in the Sources table">brynjarsdottir2014</a><a class="ev-ext" href="https://iopscience.iop.org/article/10.1088/0266-5611/30/11/114007">record</a></span><a class="chip-doi" href="https://doi.org/10.1088/0266-5611/30/11/114007">doi 10.1088/0266-5611/30/11/114007</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 1, 3</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Retain “can” rather than an unconditional “are”; add that discrepancy modelling requires physically meaningful priors when physical parameter recovery is the goal.</p></div>
+</section>
+<section class="claim v-ok" id="c06">
+<div class="claim-head"><span class="cid">C06</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">Raue and the identifiability distinction</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Raue distinguishes structural from practical non-identifiability and uses profile likelihood.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:113</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:18</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The author abstract reproduced in PubMed explicitly supports these three points: structural functional relationships, practical limitations from data quantity and quality, and profile-likelihood confidence intervals. Only the abstract was accessible; it does not validate all later Jacobian claims on the website.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Author abstract, Results</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#raue2009" title="raue2009 in the Sources table">raue2009</a><a class="ev-ext" href="https://pubmed.ncbi.nlm.nih.gov/19505944/">record</a></span><a class="chip-doi" href="https://doi.org/10.1093/bioinformatics/btp358">doi 10.1093/bioinformatics/btp358</a><span class="ev-kind k-warn" title="abstract only">abstract only</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Retain the terminology citation. Mark the evidence as abstract-level; verify detailed algorithmic claims against the full article before assigning page-level support.</p></div>
+</section>
+<section class="claim v-warn" id="c07">
+<div class="claim-head"><span class="cid">C07</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">Homometry versus a linear null space</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Homometric structures give identical intensities and constitute an exact null space.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:59</a><a class="loc" href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:20</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:20</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Patterson’s publisher abstract supports distinct non-congruent point sets with the same vector-distance set. It supports non-uniqueness, not the stronger characterization as a linear null space or necessarily a continuous family. For weighted atomic species the relevant equality is the weighted autocorrelation, not an unweighted set of vectors alone.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Publisher abstract</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#patterson1944" title="patterson1944 in the Sources table">patterson1944</a><a class="ev-ext" href="https://journals.aps.org/pr/abstract/10.1103/PhysRev.65.195">record</a></span><a class="chip-doi" href="https://doi.org/10.1103/PhysRev.65.195">doi 10.1103/PhysRev.65.195</a><span class="ev-kind k-warn" title="abstract only">abstract only</span></span></li></ul></div>
+<div class="cf cf-ind"><span class="lbl">Independent reasoning</span><p>A nonlinear map can have disconnected preimages without a positive-dimensional fibre. For <span class="math inline">\(F(x)=x^2\)</span>, <span class="math inline">\(F^{-1}(1)=\{-1,+1\}\)</span>, while <span class="math inline">\(F'(\pm1)\)</span> is nonzero.</p></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Homometric structures provide distinct solutions with the same diffraction intensities. Describe these as exact ambiguities; reserve “null space” for a linear map or its local Jacobian.</p></div>
+</section>
+<section class="claim v-warn" id="c08">
+<div class="claim-head"><span class="cid">C08</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">Rietveld profile refinement and forward-model certainty</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Rietveld supplies profile least squares, and nothing in the forward map is in doubt.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:16</a><a class="loc" href="../index.html">ecosystem/data/sources.yml:51</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The original publisher abstract supports direct use of step-scan neutron profile intensities in least-squares refinement and parameter constraints. It does not support the absolute assertion of a doubt-free forward model. Background, peak shapes, preferred orientation, microstructure and missing phases remain modelling choices.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Original publisher abstract</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#rietveld1969" title="rietveld1969 in the Sources table">rietveld1969</a><a class="ev-ext" href="https://onlinelibrary.wiley.com/doi/abs/10.1107/S0021889869006558">record</a></span><a class="chip-doi" href="https://doi.org/10.1107/S0021889869006558">doi 10.1107/S0021889869006558</a><span class="ev-kind k-warn" title="abstract only">abstract only</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Rietveld refinement fits calculated profile intensities to observed powder data by least squares. Its physical and instrumental model must still be assessed for adequacy.</p></div>
+</section>
+<section class="claim v-ok" id="c09">
+<div class="claim-head"><span class="cid">C09</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">What mode crystallography demonstrably provides</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Mode analysis exposes hidden structural correlations, separates important and marginal degrees of freedom, and can reduce effective positional parameters.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:25</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:39</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>These uses are stated in Perez-Mato et al.’s abstract and illustrated in the paper. The citation fits this sentence well.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed p. 558, abstract and introduction</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#perezmato2010" title="perezmato2010 in the Sources table">perezmato2010</a><a class="ev-ext" href="https://journals.iucr.org/paper?S0108767310016247">record</a></span><a class="chip-doi" href="https://doi.org/10.1107/S0108767310016247">doi 10.1107/S0108767310016247</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 1</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Retain with a locator to p. 558 and the relevant worked structural example; distinguish this supported description from the later statistical-identifiability extrapolations.</p></div>
+</section>
+<section class="claim v-ok" id="c10">
+<div class="claim-head"><span class="cid">C10</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">AMPLIMODES decomposition and refinement output</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>AMPLIMODES decomposes a distortion relative to a parent and supplies mode amplitudes usable in refinement.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:34</a><a class="loc" href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:26</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The paper describes the parent/distorted-structure input and symmetry-mode decomposition. Its final section explicitly describes FullProf-compatible output using basis-mode amplitudes as alternative positional parameters.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 820 and 832</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#orobengoa2009" title="orobengoa2009 in the Sources table">orobengoa2009</a><a class="ev-ext" href="https://journals.iucr.org/paper?S0021889809028064">record</a></span><a class="chip-doi" href="https://doi.org/10.1107/S0021889809028064">doi 10.1107/S0021889809028064</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 1, 13</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Retain; cite pp. 820 and 832, especially the paragraph on AMPLIMODES–FullProf output.</p></div>
+</section>
+<section class="claim v-warn" id="c11">
+<div class="claim-head"><span class="cid">C11</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">ISODISPLACE and orthonormal basis conventions</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>The mode decomposition is presented generically as an orthonormal change of basis, with the same number of independent coordinates.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:43</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:40</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Campbell et al. support an invertible change of basis within the chosen distortion space and equal independent degrees of freedom. They also note that their CLIROP modes need not be mutually orthogonal in non-rectangular cells. AMPLIMODES adopts an orthonormal convention. Neither statement means that selecting a subgroup or freezing modes preserves the original unrestricted space.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 610 and 613; CLIROP caveat and basis transformation</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#campbell2006" title="campbell2006 in the Sources table">campbell2006</a><a class="ev-ext" href="https://journals.iucr.org/paper?S0021889806014075">record</a></span><a class="chip-doi" href="https://doi.org/10.1107/S0021889806014075">doi 10.1107/S0021889806014075</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 5, 8</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">Printed pp. 823–824, basis normalization</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#orobengoa2009" title="orobengoa2009 in the Sources table">orobengoa2009</a><a class="ev-ext" href="https://journals.iucr.org/paper?S0021889809028064">record</a></span><a class="chip-doi" href="https://doi.org/10.1107/S0021889809028064">doi 10.1107/S0021889809028064</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 4, 5</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>For a fixed parent, cell, subgroup and complete set of allowed modes, the mode amplitudes are alternative coordinates for the same allowed displacements. Specify normalization and orthogonalization; imposing additional symmetry or fixing modes restricts the model.</p></div>
+</section>
+<section class="claim v-warn" id="c12">
+<div class="claim-head"><span class="cid">C12</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">Primary-mode hierarchy and sparse priors</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>One or two primary modes dominate; such prior knowledge cannot be written in atomic coordinates.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:42</a><a class="loc" href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:27</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Perez-Mato et al. §4 explains energetic hierarchies, induced secondary modes and coupling-dependent amplitudes. This supports using a hierarchical prior in suitable displacive systems. It is not a universal one-or-two-mode theorem. An invertible basis change permits the same prior to be expressed in atomic coordinates, though less simply.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 564–565, §4, especially Eq. (9)</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#perezmato2010" title="perezmato2010 in the Sources table">perezmato2010</a><a class="ev-ext" href="https://journals.iucr.org/paper?S0108767310016247">record</a></span><a class="chip-doi" href="https://doi.org/10.1107/S0108767310016247">doi 10.1107/S0108767310016247</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 7, 8</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>For many pseudosymmetric displacive structures, a small subset of distortions dominates. Mode coordinates can make a physically motivated hierarchical prior easier to express and apply; the equivalent prior can also be transformed into atomic coordinates.</p></div>
+</section>
+<section class="claim v-bad" id="c13">
+<div class="claim-head"><span class="cid">C13</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">Symmetry modes do not necessarily diagonalize the data sensitivity</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Switching to symmetry modes turns ambiguous correlated coordinates into well-determined single amplitudes and aligns the Jacobian near-null space.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:43</a><a class="loc" href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:27</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The papers support useful physical organization and sometimes reduced correlations. They do not establish that symmetry modes are the singular vectors of a particular instrument-weighted diffraction Jacobian. Perez-Mato’s discussion of privileged eigenmodes concerns the energy Hessian, not the measurement Fisher matrix.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 564–565, energy eigenmodes</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#perezmato2010" title="perezmato2010 in the Sources table">perezmato2010</a><a class="ev-ext" href="https://journals.iucr.org/paper?S0108767310016247">record</a></span><a class="chip-doi" href="https://doi.org/10.1107/S0108767310016247">doi 10.1107/S0108767310016247</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 7, 8</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">Printed 010901-4, parameterization dependence</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#transtrum2015" title="transtrum2015 in the Sources table">transtrum2015</a><a class="ev-ext" href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">record</a></span><a class="chip-doi" href="https://doi.org/10.1063/1.4923066">doi 10.1063/1.4923066</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 5</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-ind"><span class="lbl">Independent reasoning</span><p>If <span class="math inline">\(u=Ba\)</span> with B invertible, <span class="math inline">\(J_a=J_uB\)</span> and <span class="math inline">\(\operatorname{rank}(J_a)=\operatorname{rank}(J_u)\)</span>. If B is orthogonal, J_a and J_u have the same singular values. Symmetry alone does not force B to diagonalize <span class="math inline">\(J_u^{\mathsf T}J_u\)</span>.</p></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Test how well the symmetry basis aligns with sensitive and insensitive directions for the chosen experiment. A complete invertible reparameterization preserves exact identifiability; improvement in inference requires additional constraints, priors, data, or a numerical benefit.</p></div>
+</section>
+<section class="claim v-bad" id="c14">
+<div class="claim-head"><span class="cid">C14</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">Amplitude magnitude is not uncertainty</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Large amplitudes are determined and small amplitudes are undetermined.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:44</a><a class="loc" href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:27</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The mode papers rank the contribution of distortions to structure and stability. They do not equate amplitude size with statistical precision. That requires uncertainty or sensitivity analysis for the actual data.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">§4 amplitude hierarchy</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#perezmato2010" title="perezmato2010 in the Sources table">perezmato2010</a><a class="ev-ext" href="https://journals.iucr.org/paper?S0108767310016247">record</a></span><a class="chip-doi" href="https://doi.org/10.1107/S0108767310016247">doi 10.1107/S0108767310016247</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 7, 8</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">Printed p. 1873, Fig. 1 and sensitivity directions</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#gutenkunst2007" title="gutenkunst2007 in the Sources table">gutenkunst2007</a><a class="ev-ext" href="https://dx.plos.org/10.1371/journal.pcbi.0030189">record</a></span><a class="chip-doi" href="https://doi.org/10.1371/journal.pcbi.0030189">doi 10.1371/journal.pcbi.0030189</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 3</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-ind"><span class="lbl">Independent reasoning</span><p>In <span class="math inline">\(d=A+\varepsilon\)</span> with known noise variance <span class="math inline">\(\sigma^2\)</span>, the local information about A is <span class="math inline">\(1/\sigma^2\)</span>, independent of whether A is zero, small, or large.</p></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Report mode amplitudes together with their uncertainties and correlations. Rank structural contribution and statistical identifiability separately.</p></div>
+</section>
+<section class="claim v-ok" id="c15">
+<div class="claim-head"><span class="cid">C15</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">Sloppy sensitivity spectra</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Sloppy models can have sensitivity eigenvalues spanning many orders of magnitude, with stiff and sloppy parameter combinations.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:124</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:22</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Gutenkunst et al. study 17 systems-biology models and show this pattern in Fig. 1. Transtrum et al. develop the geometric interpretation. These are appropriate references; they do not prove that every inverse problem or every small parameter is sloppy.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 1872–1873; Results and Fig. 1</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#gutenkunst2007" title="gutenkunst2007 in the Sources table">gutenkunst2007</a><a class="ev-ext" href="https://dx.plos.org/10.1371/journal.pcbi.0030189">record</a></span><a class="chip-doi" href="https://doi.org/10.1371/journal.pcbi.0030189">doi 10.1371/journal.pcbi.0030189</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 2, 3</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">Printed 010901-4, §III</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#transtrum2015" title="transtrum2015 in the Sources table">transtrum2015</a><a class="ev-ext" href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">record</a></span><a class="chip-doi" href="https://doi.org/10.1063/1.4923066">doi 10.1063/1.4923066</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 5</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Retain, with the model-family scope and a citation to Gutenkunst Fig. 1; use dimensionless parameter scales when comparing directions.</p></div>
+</section>
+<section class="claim v-bad" id="c16">
+<div class="claim-head"><span class="cid">C16</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">A small singular value needs a parameter scale</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>An unscaled singular value much smaller than one is a practical non-identifiability.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:35</a><a class="loc" href="../../programme/index.html">ecosystem/site/programme/index.qmd:17</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Transtrum et al. explicitly warn that Fisher eigenvalues change under parameter units and reparameterization. Noise whitening alone does not make differently dimensioned parameter directions comparable.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed 010901-4, §III, unit-change example</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#transtrum2015" title="transtrum2015 in the Sources table">transtrum2015</a><a class="ev-ext" href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">record</a></span><a class="chip-doi" href="https://doi.org/10.1063/1.4923066">doi 10.1063/1.4923066</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 5</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Choose meaningful dimensionless parameter scales or a prior metric, then interpret J S and its sensitivity relative to a stated parameter range and noise model. Assess nonlinear/global behaviour separately.</p></div>
+</section>
+<section class="claim v-bad" id="c17">
+<div class="claim-head"><span class="cid">C17</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">Local Jacobian rank is not a complete structural-identifiability test</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Zero Jacobian singular values diagnose structural non-identifiability, and structural non-identifiability is always a positive-dimensional fibre.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:35</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:87</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The website conflates local first-order rank deficiency, continuous non-identifiability, and global discrete ambiguities. Raue’s abstract supports the general distinction but not these equivalences. Exact elementary counterexamples settle the issue.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Abstract supports only the broader terminology</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#raue2009" title="raue2009 in the Sources table">raue2009</a><a class="ev-ext" href="https://pubmed.ncbi.nlm.nih.gov/19505944/">record</a></span><a class="chip-doi" href="https://doi.org/10.1093/bioinformatics/btp358">doi 10.1093/bioinformatics/btp358</a><span class="ev-kind k-warn" title="abstract only">abstract only</span></span></li><li class="ev"><span class="ev-loc">Abstract gives multiple non-congruent homometric configurations</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#patterson1944" title="patterson1944 in the Sources table">patterson1944</a><a class="ev-ext" href="https://journals.aps.org/pr/abstract/10.1103/PhysRev.65.195">record</a></span><a class="chip-doi" href="https://doi.org/10.1103/PhysRev.65.195">doi 10.1103/PhysRev.65.195</a><span class="ev-kind k-warn" title="abstract only">abstract only</span></span></li></ul></div>
+<div class="cf cf-ind"><span class="lbl">Independent reasoning</span><p><span class="math inline">\(F(x)=x^3\)</span> is injective even though <span class="math inline">\(F'(0)=0\)</span>. <span class="math inline">\(F(x)=x^2\)</span> has two preimages for positive data but nonzero derivative at each preimage. Thus neither stated equivalence holds without qualifications.</p></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Distinguish global from local identifiability, continuous from discrete ambiguities, and first-order rank deficiency from a structural proof. Use the Jacobian as a local diagnostic with regularity assumptions.</p></div>
+</section>
+<section class="claim v-bad" id="c18">
+<div class="claim-head"><span class="cid">C18</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">A likelihood region is not a posterior</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>The chi-square tube is a posterior distribution.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:77</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:32</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Tarantola Eq. (1.100) includes a prior multiplying a likelihood. The website’s tube is a thresholded residual set, with no probability density or prior weighting. It is not itself a posterior or automatically a credible region.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed p. 35, Eqs. (1.94) and (1.100)</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#tarantola2005" title="tarantola2005 in the Sources table">tarantola2005</a><a class="ev-ext" href="https://epubs.siam.org/doi/book/10.1137/1.9780898717921">record</a></span><a class="chip-doi" href="https://doi.org/10.1137/1.9780898717921">doi 10.1137/1.9780898717921</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 49</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">Printed pp. 152–153, Eqs. (19)–(23)</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#daun2019" title="daun2019 in the Sources table">daun2019</a><a class="ev-ext" href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">record</a></span><a class="chip-doi" href="https://doi.org/10.1016/j.jqsrt.2019.01.021">doi 10.1016/j.jqsrt.2019.01.021</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 7, 8</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>The tube is a data-misfit acceptance region. A Bayesian posterior weights configurations using both likelihood and prior; a credible region is constructed from that normalized posterior.</p></div>
+</section>
+<section class="claim v-ok" id="c19">
+<div class="claim-head"><span class="cid">C19</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">The model-manifold description</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>The image of the forward model in data space can be studied geometrically as a model manifold, often with a hierarchy of widths.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:133</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:33</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Transtrum et al. provide this formulation and discuss hyperribbons and manifold-boundary approximation. The model image can also have singularities or self-intersections, so “manifold” is a useful regular-model description rather than a universal smoothness guarantee.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed 010901-2, -4 and -5; §§II–IV</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#transtrum2015" title="transtrum2015 in the Sources table">transtrum2015</a><a class="ev-ext" href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">record</a></span><a class="chip-doi" href="https://doi.org/10.1063/1.4923066">doi 10.1063/1.4923066</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 3, 5, 6</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Retain with a reference to §§II–IV; qualify the thin-ribbon picture as a common geometry of the studied sloppy models.</p></div>
+</section>
+<section class="claim v-warn" id="c20">
+<div class="claim-head"><span class="cid">C20</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">Cranmer supports approximate amortized inference, not guaranteed recovery</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>A network returns the full posterior for any new measurement, including all disconnected branches, at guaranteed campaign-scale speed.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:144</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:68</a><a class="loc" href="../../programme/index.html">ecosystem/site/programme/index.qmd:38</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Cranmer et al. describe amortized likelihood, likelihood-ratio and posterior surrogates. They also discuss finite-sample, capacity and optimization errors and calibration. The review does not guarantee complete branch recovery, arbitrary out-of-distribution accuracy, or the specific timing claim.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Local arXiv version pp. 7–8, §3B–D</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#cranmer2020" title="cranmer2020 in the Sources table">cranmer2020</a><a class="ev-ext" href="https://pnas.org/doi/full/10.1073/pnas.1912789117">record</a></span><a class="chip-doi" href="https://doi.org/10.1073/pnas.1912789117">doi 10.1073/pnas.1912789117</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 7, 8</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Simulation-based inference can learn an approximate posterior or likelihood surrogate over a specified simulation domain. Validate calibration, branch coverage, robustness to model mismatch, and computational cost on the intended experiment.</p></div>
+</section>
+<section class="claim v-ok" id="c21">
+<div class="claim-head"><span class="cid">C21</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">Park dataset and accuracy figures</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Park uses about 150,000 simulated patterns and reports approximately 95%, 84% and 81% accuracy for crystal system, extinction group and space group.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:153</a><a class="loc" href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:31</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:61</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The dataset size and ordering of percentages are correct. The exact values are 94.99%, 83.83% and 81.14%, evaluated on a randomly selected 20% test split of the simulated dataset. These are benchmark results, not information-theoretic limits of powder diffraction.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 486, 488 and 490; abstract, §2 and test evaluation</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#park2017" title="park2017 in the Sources table">park2017</a><a class="ev-ext" href="https://journals.iucr.org/paper?S205225251700714X">record</a></span><a class="chip-doi" href="https://doi.org/10.1107/S205225251700714X">doi 10.1107/S205225251700714X</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 1, 3, 5</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Retain the numbers; say “test accuracies on their simulated-data benchmark” and avoid interpreting the percentages as universal experimental identifiability.</p></div>
+</section>
+<section class="claim v-ok" id="c22">
+<div class="claim-head"><span class="cid">C22</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">Lee dataset size and chemical scope</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Lee uses about 1.8 million synthetic mixture patterns from 170 compounds.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:162</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:61</a><a class="loc" href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:31</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The article gives 1,785,405 patterns and 170 compounds. The chemical scope is the Sr–Li–Al–O quaternary pool. The paper supports the dataset claim, but not an unrestricted capability across all inorganic materials.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Article pp. 1–2, abstract and Results</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#lee2020" title="lee2020 in the Sources table">lee2020</a><a class="ev-ext" href="https://www.nature.com/articles/s41467-019-13749-3">record</a></span><a class="chip-doi" href="https://doi.org/10.1038/s41467-019-13749-3">doi 10.1038/s41467-019-13749-3</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 1, 2</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Use the exact number when useful and specify the Sr–Li–Al–O reference set.</p></div>
+</section>
+<section class="claim v-warn" id="c23">
+<div class="claim-head"><span class="cid">C23</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">Szymanski probabilities are phase-classification confidence</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Szymanski returns distributions instead of labels, providing the required form of output for an underdetermined inverse problem.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:171</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:61</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The paper uses 1,000 stochastic dropout predictions and defines a phase’s probability as its fraction of predicted labels. It ranks phases and uses a branching procedure to select a mixture. These are phase-classification confidence scores, not a posterior over continuous atomic or mode parameters, and the final result still identifies phases.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Publisher-typeset early-access PDF pp. 3–4 (C–D), CNN and branching sections</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#szymanski2021" title="szymanski2021 in the Sources table">szymanski2021</a><a class="ev-ext" href="https://pubs.acs.org/doi/10.1021/acs.chemmater.1c01071">record</a></span><a class="chip-doi" href="https://doi.org/10.1021/acs.chemmater.1c01071">doi 10.1021/acs.chemmater.1c01071</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 3, 4</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Szymanski combines physics-based augmentation with dropout-based phase confidence and a branching mixture-identification algorithm. Cite it as a related classification workflow, not as evidence of posterior inference over the refinement configuration space.</p></div>
+</section>
+<section class="claim v-warn" id="c24">
+<div class="claim-head"><span class="cid">C24</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">The three ML papers are precedents, not the proposed mode-refinement pipeline</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>The three papers establish the proposed scripted-expertise pipeline and show that the wider field does not yet perform mode-space corpus refinement.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../cases/rietveld/index.html">ecosystem/site/cases/rietveld/index.qmd:31</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:61</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>They demonstrate synthetic-data classification and phase identification, not posterior mapping of symmetry-mode refinements. Their contents support a narrow comparison with the proposed work. Reviewing these three papers cannot establish priority, absence of competing work, or a ranking of the field’s best results.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">§§2–4</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#park2017" title="park2017 in the Sources table">park2017</a><a class="ev-ext" href="https://journals.iucr.org/paper?S205225251700714X">record</a></span><a class="chip-doi" href="https://doi.org/10.1107/S205225251700714X">doi 10.1107/S205225251700714X</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 3, 5</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">Abstract and Results</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#lee2020" title="lee2020 in the Sources table">lee2020</a><a class="ev-ext" href="https://www.nature.com/articles/s41467-019-13749-3">record</a></span><a class="chip-doi" href="https://doi.org/10.1038/s41467-019-13749-3">doi 10.1038/s41467-019-13749-3</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 1, 2</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">CNN and branching workflow</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#szymanski2021" title="szymanski2021 in the Sources table">szymanski2021</a><a class="ev-ext" href="https://pubs.acs.org/doi/10.1021/acs.chemmater.1c01071">record</a></span><a class="chip-doi" href="https://doi.org/10.1021/acs.chemmater.1c01071">doi 10.1021/acs.chemmater.1c01071</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 3, 4</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>These three examples show how physical modelling enters synthetic training data. The proposed mode-refinement corpus has a different target; its novelty requires a separate literature search.</p></div>
+</section>
+<section class="claim v-warn" id="c25">
+<div class="claim-head"><span class="cid">C25</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">Kuzmenko’s background model and dense variational mesh</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Kuzmenko’s variational dielectric function is anchored by a few oscillators.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:182</a><a class="loc" href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:25</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The central method independently adjusts the imaginary dielectric function on a dense anchor-frequency mesh and couples the real part by KK. The number of variational degrees of freedom can be comparable to the number of data points. A limited-parameter background model supplies extrapolation behaviour in a separate first fitting step. The phrase could refer to that background model, but it is ambiguous without this distinction; it should not stand alone as a description of the variational representation.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed 083108-1, -3 and -4; abstract and §IV, Eqs. (14) and (17)</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#kuzmenko2005" title="kuzmenko2005 in the Sources table">kuzmenko2005</a><a class="ev-ext" href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of">record</a></span><a class="chip-doi" href="https://doi.org/10.1063/1.1979470">doi 10.1063/1.1979470</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 3, 5, 6</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Kuzmenko represents the dielectric function on a dense frequency mesh constrained by KK, with a background model for out-of-range spectral weight. Do not conflate this mesh with a small set of physical oscillators.</p></div>
+</section>
+<section class="claim v-warn" id="c26">
+<div class="claim-head"><span class="cid">C26</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">Phase recovery needs analytic and geometry conditions</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Causality alone fixes reflection phase from its modulus over the whole frequency axis.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:25</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:52</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Kuzmenko explicitly states the extra condition that r has no zeros in the upper complex-frequency half-plane for the logarithmic reflectivity relation. He notes failures for sufficiently oblique incidence and thin films. The standard relation couples phase to log modulus, not directly to modulus.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed 083108-1, Eqs. (3)–(4) and adjacent caveat</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#kuzmenko2005" title="kuzmenko2005 in the Sources table">kuzmenko2005</a><a class="ev-ext" href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of">record</a></span><a class="chip-doi" href="https://doi.org/10.1063/1.1979470">doi 10.1063/1.1979470</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 3</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>For geometries satisfying the analytic conditions for log r, such as the standard semi-infinite normal-incidence case, KK relates reflection phase to log modulus, with extrapolation assumptions outside the measured range.</p></div>
+</section>
+<section class="claim v-bad" id="c27">
+<div class="claim-head"><span class="cid">C27</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">Unmeasured spectral weight is not generically invisible</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Everything outside the measured frequency range lies in the null space.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:19</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Kuzmenko §IV.D explicitly explains that high- and low-frequency spectral weight contributes to the real dielectric function inside the measured band. Extrapolation uncertainty is real, but it is not an arbitrary exact null space of all out-of-band changes.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed 083108-4, §IV.D</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#kuzmenko2005" title="kuzmenko2005 in the Sources table">kuzmenko2005</a><a class="ev-ext" href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of">record</a></span><a class="chip-doi" href="https://doi.org/10.1063/1.1979470">doi 10.1063/1.1979470</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 6</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Out-of-band spectral weight can affect in-band optical response through KK coupling. Finite-band data may constrain it weakly and ambiguously, so extrapolation assumptions and additional measurements remain important.</p></div>
+</section>
+<section class="claim v-bad" id="c28">
+<div class="claim-head"><span class="cid">C28</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">Oscillator non-identifiability is not universal</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>A finite oscillator decomposition is necessarily non-unique even if the dielectric function is known.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:19</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:52</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Kuzmenko’s flexible variational representation is not a theorem that every fixed finite Lorentz model is structurally non-identifiable. Overlap, finite bandwidth, unknown model order and noise can make fits weakly determined. Exact degeneracies require separate conditions.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed 083108-3–4, variational representation</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#kuzmenko2005" title="kuzmenko2005 in the Sources table">kuzmenko2005</a><a class="ev-ext" href="https://pubs.aip.org/rsi/article/76/8/083108/822925/Kramers-Kronig-constrained-variational-analysis-of">record</a></span><a class="chip-doi" href="https://doi.org/10.1063/1.1979470">doi 10.1063/1.1979470</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 5, 6</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-ind"><span class="lbl">Independent reasoning</span><p>A rational response with fixed distinct simple poles has a unique partial-fraction representation up to ordering. Coincident poles can instead make individual strengths degenerate. These are different cases.</p></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Different oscillator models may fit finite-band noisy data comparably well. Assess identifiability for the specified model order and parameterization; do not assert universal exact non-uniqueness.</p></div>
+</section>
+<section class="claim v-ok" id="c29">
+<div class="claim-head"><span class="cid">C29</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">difes software claims and optical assumptions</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>difes implements additive/multiplicative dielectric terms, Fresnel optics, finite-range KK corrections and textual recipes.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:190</a><a class="loc" href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:15</a><a class="loc" href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:28</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Read-only inspection at commit 55e78ff908519322dbf37af22efb0fc8a0223a15 confirms the documented model convention, normal-incidence bulk and slab routines, KK correction routines, and recipe syntax. This confirms implementation/documentation, not numerical accuracy or physical adequacy for every sample.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">README conventions/recipes; optics.py:48–74; kk.py:1–21; recipe example</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#difes2026" title="difes2026 in the Sources table">difes2026</a><a class="ev-ext" href="https://github.com/jmigartua/difes">record</a></span><span class="ev-kind k-ok" title="versioned software source">software source</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Retain the software citation with a commit and relevant modules. State the normal-incidence, sample-geometry and opacity assumptions next to the simple Fresnel/emissivity equations.</p></div>
+</section>
+<section class="claim v-warn" id="c30">
+<div class="claim-head"><span class="cid">C30</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">A missing primary source for finite-range correction</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Kuzmenko 2005 is the nearby citation for difes finite-range corrections.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../cases/dielectric/index.html">ecosystem/site/cases/dielectric/index.qmd:25</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The inspected difes kk.py explicitly attributes its correction method to De Sousa Meneses et al. 2007. The primary paper Retrieval of linear optical functions from finite range spectra has DOI 10.1366/000370207783292163, independently identified in PubMed. Kuzmenko’s variational approach and this CFRC method should be distinguished.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">kk.py module documentation</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#difes2026" title="difes2026 in the Sources table">difes2026</a><a class="ev-ext" href="https://github.com/jmigartua/difes">record</a></span><span class="ev-kind k-ok" title="versioned software source">software source</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Cite De Sousa Meneses, Rousseau, Echegut and Simon (2007), Applied Spectroscopy 61, 1390–1397, DOI 10.1366/000370207783292163, for CFRC; retain Kuzmenko for KK-constrained variational fitting. Full method details in the new paper still require full-text review.</p></div>
+</section>
+<section class="claim v-open" id="c31">
+<div class="claim-head"><span class="cid">C31</span><span class="verdict v-open">Not fully verified</span></div>
+<h3 class="anchored">The thesis cannot yet support a detailed technical claim</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>The thesis supports the high-temperature emissivity and dielectric-modelling context.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../index.html">ecosystem/data/sources.yml:199</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Its bibliographic identity and topic were previously established, but no thesis full text is in the collection. This audit cannot assign chapter/page evidence or validate a particular result from it.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">No local full text</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#gonzalezdearrieta2020" title="gonzalezdearrieta2020 in the Sources table">gonzalezdearrieta2020</a><a class="ev-ext" href="https://hdl.handle.net/10810/50263">record</a></span><span class="ev-kind k-open" title="bibliographic context only">bibliographic only</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Use it as bibliographic context only until the relevant thesis chapters are available. Do not mark its substantive results verified.</p></div>
+</section>
+<section class="claim v-ok" id="c32">
+<div class="claim-head"><span class="cid">C32</span><span class="verdict v-ok">Supported within stated scope</span></div>
+<h3 class="anchored">Daun experimental conditions and tabulated parameters</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>The particle size, adopted temperature, spectral ranges and listed Drude estimates summarize Daun’s experiment.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:15</a><a class="loc" href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:22</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The article supports 38.3 nm mean diameter, 5.7 nm standard deviation, an adopted 1550 <span class="math inline">\(\pm\)</span> 35 K from earlier silicon work, and the two wavelength ranges. The table reproduces the five parameter pairs correctly. Table 3 concerns fits/comparisons for the LDLS spectrum.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 147, 152–153; §2, Fig. 7, Table 3</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#daun2019" title="daun2019 in the Sources table">daun2019</a><a class="ev-ext" href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">record</a></span><a class="chip-doi" href="https://doi.org/10.1016/j.jqsrt.2019.01.021">doi 10.1016/j.jqsrt.2019.01.021</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 2, 7, 8</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Retain the values; label Table 3 as the LDLS comparison and keep the temperature’s adopted, rather than directly measured, status explicit.</p></div>
+</section>
+<section class="claim v-bad" id="c33">
+<div class="claim-head"><span class="cid">C33</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">Daun surface scattering explanation is reversed</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Daun offers surface-electron scattering at about 40 nm as an explanation of the discrepancy.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:35</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>On p. 154 the authors estimate an electron mean free path of 0.54 nm, far below the roughly 40 nm particle size, and discount this explanation for their case. They favour inadequacy of the simplistic free-electron model and discuss a reduced effective conduction-electron density.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed p. 154, §5, right column</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#daun2019" title="daun2019 in the Sources table">daun2019</a><a class="ev-ext" href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">record</a></span><a class="chip-doi" href="https://doi.org/10.1016/j.jqsrt.2019.01.021">doi 10.1016/j.jqsrt.2019.01.021</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 9</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Daun et al. consider surface scattering but judge it too small to explain their discrepancy; they instead discuss limitations of the free-electron description, including fewer effective conduction electrons.</p></div>
+</section>
+<section class="claim v-bad" id="c34">
+<div class="claim-head"><span class="cid">C34</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">The LDLS sees the shoulder, not the 190 nm peak</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>The 205–585 nm measurement reaches the resonance peak near 190 nm.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:30</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The stated lower wavelength is 205 nm. The paper says the LDLS captures more spectral variation associated with a resonance whose peak is near 190 nm; the peak itself is outside the quoted measurement interval. Improved signal-to-noise also contributes to the narrower posterior.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 151–152 and 154; discussion of Fig. 7 and Fig. 9</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#daun2019" title="daun2019 in the Sources table">daun2019</a><a class="ev-ext" href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">record</a></span><a class="chip-doi" href="https://doi.org/10.1016/j.jqsrt.2019.01.021">doi 10.1016/j.jqsrt.2019.01.021</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 6, 7, 9</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>The LDLS captures more of the resonance shoulder and has higher signal-to-noise; the peak near 190 nm is outside its stated 205–585 nm range.</p></div>
+</section>
+<section class="claim v-bad" id="c35">
+<div class="claim-head"><span class="cid">C35</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">Daun approximation-error sampling is not the stated prior range</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>The approximation-error samples span the same prior range as the inference.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:19</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The printed p. 152 sampling intervals differ from the p. 153 prior intervals, including the powers of ten. The published text may contain a typographical problem, but the website silently equates them. The error term is fitted from 1,000 samples; the posterior uses <span class="math inline">\(10^{6}\)</span> MCMC samples. Specifically, p. 152 prints <span class="math inline">\(\omega_p\)</span> in [<span class="math inline">\(1.5\times10^{15}\)</span>, <span class="math inline">\(3\times10^{15}\)</span>] <span class="math inline">\(\mathrm{s}^{-1}\)</span> and <span class="math inline">\(\tau\)</span> in [<span class="math inline">\(1.5\times10^{-15}\)</span>, <span class="math inline">\(3\times10^{-15}\)</span>] s, whereas Eq. (22) prints [<span class="math inline">\(1.5\times10^{16}\)</span>, <span class="math inline">\(4.5\times10^{16}\)</span>] rad/s and [<span class="math inline">\(1.5\times10^{-16}\)</span>, <span class="math inline">\(4.5\times10^{-16}\)</span>] s. These are transcribed discrepancies, not corrected inputs for a replication.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 152–153, text after Eq. (18) and Eq. (22)</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#daun2019" title="daun2019 in the Sources table">daun2019</a><a class="ev-ext" href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">record</a></span><a class="chip-doi" href="https://doi.org/10.1016/j.jqsrt.2019.01.021">doi 10.1016/j.jqsrt.2019.01.021</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 7, 8</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Describe the sampling construction without claiming the two ranges match. Before reproducing the calculation, resolve the paper’s inconsistent printed intervals using supplementary material or author clarification.</p></div>
+</section>
+<section class="claim v-warn" id="c36">
+<div class="claim-head"><span class="cid">C36</span><span class="verdict v-warn">Needs qualification or a better citation</span></div>
+<h3 class="anchored">Low-frequency Drude degeneracy is a limiting approximation</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>At low frequency only <span class="math inline">\(\omega_p^2\tau\)</span> enters the measured spectrum, creating exact non-identifiability of the full model.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:20</a><a class="loc" href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:36</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Daun Eq. (4) retains separate parameter dependence at finite frequency. The product controls DC conductivity and the leading dissipative low-frequency term. Treating a finite-band full Drude/Mie measurement as exactly product-only requires an explicit reduced forward model and limit.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed p. 149, Eqs. (4)–(5)</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#daun2019" title="daun2019 in the Sources table">daun2019</a><a class="ev-ext" href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">record</a></span><a class="chip-doi" href="https://doi.org/10.1016/j.jqsrt.2019.01.021">doi 10.1016/j.jqsrt.2019.01.021</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 4</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-ind"><span class="lbl">Independent reasoning</span><p>For <span class="math inline">\(\omega\tau\ll 1\)</span>, <span class="math inline">\(\varepsilon_I=1-\omega_p^2\tau^2+O(\omega^2)\)</span> while <span class="math inline">\(\varepsilon_{II}=\omega_p^2\tau/\omega+O(\omega)\)</span>. The subleading information can be small, but the full expression is not solely a function of the product.</p></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>In a reduced DC/leading-order model the data may depend only on <span class="math inline">\(\omega_p^2\tau\)</span>. In the full finite-frequency optical model, assess whether the separate sensitivities are merely too weak to resolve.</p></div>
+</section>
+<section class="claim v-strong" id="c37">
+<div class="claim-head"><span class="cid">C37</span><span class="verdict v-strong">Proposal presented too strongly</span></div>
+<h3 class="anchored">A surrogate does not automatically remove model error</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>A learned Mie surrogate eliminates the approximation-error term and makes MCMC run on exact theory.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:70</a><a class="loc" href="../../cases/drude/index.html">ecosystem/site/cases/drude/index.qmd:40</a><a class="loc" href="../../programme/index.html">ecosystem/site/programme/index.qmd:52</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>Daun supplies the motivation for a cheaper forward calculation, not a trained or validated surrogate. A learned emulator has its own approximation error. Even exact Mie calculations do not repair an inadequate dielectric model.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed pp. 151–152 and 154</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#daun2019" title="daun2019 in the Sources table">daun2019</a><a class="ev-ext" href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">record</a></span><a class="chip-doi" href="https://doi.org/10.1016/j.jqsrt.2019.01.021">doi 10.1016/j.jqsrt.2019.01.021</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 6, 7, 9</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">Surrogate inference and calibration discussion</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#cranmer2020" title="cranmer2020 in the Sources table">cranmer2020</a><a class="ev-ext" href="https://pnas.org/doi/full/10.1073/pnas.1912789117">record</a></span><a class="chip-doi" href="https://doi.org/10.1073/pnas.1912789117">doi 10.1073/pnas.1912789117</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 7, 8</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Test a surrogate against exact Mie over the inference domain. Propagate or bound its error relative to measurement noise; separately assess Drude model discrepancy. Treat runtime and posterior agreement as measured outcomes.</p></div>
+</section>
+<section class="claim v-strong" id="c38">
+<div class="claim-head"><span class="cid">C38</span><span class="verdict v-strong">Proposal presented too strongly</span></div>
+<h3 class="anchored">Expected information gain is not determined by a Jacobian alone</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>The Jacobian alone computes expected information gain and would have selected the UV source in advance.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:72</a><a class="loc" href="../../programme/index.html">ecosystem/site/programme/index.qmd:52</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The cited Daun paper compares actual sources; it does not perform the proposed design calculation. A Jacobian can enter a local linear-Gaussian approximation, but global Bayesian expected information gain also requires a prior/current posterior, a noise model, a candidate likelihood and averaging over possible data.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed p. 154; source comparison</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#daun2019" title="daun2019 in the Sources table">daun2019</a><a class="ev-ext" href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">record</a></span><a class="chip-doi" href="https://doi.org/10.1016/j.jqsrt.2019.01.021">doi 10.1016/j.jqsrt.2019.01.021</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 9</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">Prior and likelihood roles in posterior</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#tarantola2005" title="tarantola2005 in the Sources table">tarantola2005</a><a class="ev-ext" href="https://epubs.siam.org/doi/book/10.1137/1.9780898717921">record</a></span><a class="chip-doi" href="https://doi.org/10.1137/1.9780898717921">doi 10.1137/1.9780898717921</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 49</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Start with a clearly labelled local Fisher-information design approximation, then test it against posterior-based expected information gain and simulated source choices. Do not prestate the ranking as a demonstrated result.</p></div>
+</section>
+<section class="claim v-strong" id="c39">
+<div class="claim-head"><span class="cid">C39</span><span class="verdict v-strong">Proposal presented too strongly</span></div>
+<h3 class="anchored">The P1 diagnostic cannot identify all three failure types alone</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>A Jacobian SVD and a two-parameter region show at a glance whether the problem has structural non-identifiability, practical non-identifiability or model inadequacy.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../programme/index.html">ecosystem/site/programme/index.qmd:18</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The local Jacobian diagnoses first-order sensitivity under the assumed model. It neither proves global uniqueness nor checks whether the assumed forward model describes reality. No cited source establishes the promised three-way diagnosis.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Profile-likelihood motivation</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#raue2009" title="raue2009 in the Sources table">raue2009</a><a class="ev-ext" href="https://pubmed.ncbi.nlm.nih.gov/19505944/">record</a></span><a class="chip-doi" href="https://doi.org/10.1093/bioinformatics/btp358">doi 10.1093/bioinformatics/btp358</a><span class="ev-kind k-warn" title="abstract only">abstract only</span></span></li><li class="ev"><span class="ev-loc">Model discrepancy and confounding</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#brynjarsdottir2014" title="brynjarsdottir2014 in the Sources table">brynjarsdottir2014</a><a class="ev-ext" href="https://iopscience.iop.org/article/10.1088/0266-5611/30/11/114007">record</a></span><a class="chip-doi" href="https://doi.org/10.1088/0266-5611/30/11/114007">doi 10.1088/0266-5611/30/11/114007</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 1, 3</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">Local sensitivity and parameterization caveats</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#transtrum2015" title="transtrum2015 in the Sources table">transtrum2015</a><a class="ev-ext" href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">record</a></span><a class="chip-doi" href="https://doi.org/10.1063/1.4923066">doi 10.1063/1.4923066</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 5</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Use scaled SVD as one diagnostic, alongside nonlinear profile/posterior exploration, global ambiguity checks, residual analysis, and model/predictive validation. Present P1 as a proposed suite, not a sufficient classification rule.</p></div>
+</section>
+<section class="claim v-open" id="c40">
+<div class="claim-head"><span class="cid">C40</span><span class="verdict v-open">Not fully verified</span></div>
+<h3 class="anchored">Data availability and reproducibility claims</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Daun’s underlying data are not public.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../programme/index.html">ecosystem/site/programme/index.qmd:52</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The article lists supplementary material on p. 155. The collection contains the main paper, but this audit has not established what all supplements or repositories contain. Failure to have downloaded data is not evidence that they are unavailable publicly.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Printed p. 155, Supplementary material note</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#daun2019" title="daun2019 in the Sources table">daun2019</a><a class="ev-ext" href="https://linkinghub.elsevier.com/retrieve/pii/S0022407318309178">record</a></span><a class="chip-doi" href="https://doi.org/10.1016/j.jqsrt.2019.01.021">doi 10.1016/j.jqsrt.2019.01.021</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 10</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>The original measurement data have not yet been obtained for this project. Check the supplementary files and data repositories before claiming that the data are not public.</p></div>
+</section>
+<section class="claim v-bad" id="c41">
+<div class="claim-head"><span class="cid">C41</span><span class="verdict v-bad">Incorrect as written</span></div>
+<h3 class="anchored">A covariance diagonal is not a conditional tube cross-section</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Diagonal covariance uncertainties describe transverse width but exclude the long sloppy directions.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:22</a><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:22</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>In the local Gaussian approximation, diagonal covariance entries are marginal variances along parameter axes and can already be large because of sloppy directions. Reading only the diagonal loses orientation and dependence, not all contribution from long directions. Nonlinearity can invalidate the approximation.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Fig. 1 distinguishes projections from intersections</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#gutenkunst2007" title="gutenkunst2007 in the Sources table">gutenkunst2007</a><a class="ev-ext" href="https://dx.plos.org/10.1371/journal.pcbi.0030189">record</a></span><a class="chip-doi" href="https://doi.org/10.1371/journal.pcbi.0030189">doi 10.1371/journal.pcbi.0030189</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 3</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-ind"><span class="lbl">Independent reasoning</span><p>For <span class="math inline">\(H=J^{\mathsf T}J=V\operatorname{diag}(\sigma_k^2)V^{\mathsf T}\)</span>, <span class="math inline">\(\operatorname{Cov}_{ii}=\sum_k V_{ik}^2/\sigma_k^2\)</span>. Small <span class="math inline">\(\sigma_k\)</span> explicitly contribute to diagonal marginal variances.</p></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Report covariance eigenvectors and correlations as well as marginal standard errors; use nonlinear exploration where the local ellipsoid is inadequate.</p></div>
+</section>
+<section class="claim v-strong" id="c42">
+<div class="claim-head"><span class="cid">C42</span><span class="verdict v-strong">Proposal presented too strongly</span></div>
+<h3 class="anchored">Transferability and parameter-point dependence</h3>
+<div class="cf cf-claim"><span class="lbl">Website claim</span><p>Identifiability learned from synthetic data transfers by construction and is independent of the sample.</p></div>
+<div class="cf cf-loc"><span class="lbl">Where</span><span class="locs"><a class="loc" href="../../discourse/index.html">ecosystem/site/discourse/index.qmd:78</a><a class="loc" href="../../programme/index.html">ecosystem/site/programme/index.qmd:38</a></span></div>
+<div class="cf cf-ev"><span class="lbl">Evidence and assessment</span><p>The website itself defines J at a parameter point. Nonlinear sensitivities and identifiable combinations can vary with parameters, nuisance effects, noise and model mismatch. The three cited classification studies show performance in specified tests, not universal transfer.</p><ul class="ev-list"><li class="ev"><span class="ev-loc">Inference reliability and calibration</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#cranmer2020" title="cranmer2020 in the Sources table">cranmer2020</a><a class="ev-ext" href="https://pnas.org/doi/full/10.1073/pnas.1912789117">record</a></span><a class="chip-doi" href="https://doi.org/10.1073/pnas.1912789117">doi 10.1073/pnas.1912789117</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 8</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li><li class="ev"><span class="ev-loc">Parameterized model geometry</span><span class="ev-chips"><span class="srcpair"><a class="srckey" href="../index.html#transtrum2015" title="transtrum2015 in the Sources table">transtrum2015</a><a class="ev-ext" href="https://pubs.aip.org/jcp/article/143/1/010901/566995/Perspective-Sloppiness-and-emergent-theories-in">record</a></span><a class="chip-doi" href="https://doi.org/10.1063/1.4923066">doi 10.1063/1.4923066</a><span class="chip-page" title="page of the reviewed local copy, covers counted">PDF p. 3, 5</span><span class="ev-kind k-ok" title="full-text passage">full text</span></span></li></ul></div>
+<div class="cf cf-prop"><span class="lbl">Proposed wording or action</span><p>Learn identifiability over a stated parameter and instrument domain, then test transfer on held-out regimes and real measurements. Retain parameter-point and model-mismatch dependence.</p></div>
+</section>
+</div>
 <h2 id="additional-primary-reference" class="anchored">Additional primary reference</h2>
 <p>Domingos De Sousa Meneses; Benoit Rousseau; Patrick Echegut; Patrick Simon (2007). <em>Retrieval of linear optical functions from finite range spectra</em>. Applied Spectroscopy 61, 1390–1397. <a href="https://doi.org/10.1366/000370207783292163">DOI 10.1366/000370207783292163</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/18198033/">record</a>.</p>
 <p>Primary CFRC reference named by difes kk.py; distinct from Kuzmenko variational fitting. Bibliographic record and abstract-level discovery; full article not obtained.</p>
